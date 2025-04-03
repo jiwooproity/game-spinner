@@ -11,9 +11,13 @@ const PRODUCTS = new Map([
 
 const COLORS = ["#dc0936", "#e6471d", "#209b6c", "#169ed8", "#87207b", "#2d2072"];
 
+const getProductSize = () => {
+  return PRODUCTS.values().reduce((a, b) => a + b, 0);
+};
+
 const draw = (angle) => {
   const [cw, ch] = [$canvas.width / 2, $canvas.height / 2];
-  const total = PRODUCTS.values().reduce((a, b) => a + b, 0);
+  const total = getProductSize();
   const radian = ((360 / total) * Math.PI) / 180;
 
   PRODUCTS.keys().forEach((name, i) => {
@@ -43,13 +47,7 @@ const draw = (angle) => {
   });
 };
 
-const resizing = () => {
-  RESULT.slice(0, RESULT.length);
-
-  PRODUCTS.keys().forEach((name) => {
-    RESULT.push(...Array.from({ length: PRODUCTS.get(name) }).fill(name));
-  });
-};
+const initResults = () => {};
 
 const addProduct = (name, length) => {
   PRODUCTS.set(name, PRODUCTS.has(name) ? PRODUCTS.get(name) + length : length);
@@ -61,15 +59,11 @@ const rotate = () => {
   $canvas.style.transition = `initial`;
 
   setTimeout(() => {
-    const total = PRODUCTS.values().reduce((a, b) => a + b, 0);
-
-    const pick = Math.floor(Math.random() * total);
-    const arc = 360 / total;
-    const rotate = 360 - arc * pick + 3600 + arc / 3;
-
-    $canvas.style.transform = `rotate(${rotate}deg)`;
+    $canvas.style.transform = `rotate(${0}deg)`;
     $canvas.style.transition = `2s ease-out`;
   }, 1);
 };
 
-draw(0);
+window.addEventListener("DOMContentLoaded", () => {
+  draw(0);
+});
