@@ -7,13 +7,25 @@
     <title>BBUMING Roulette</title>
   </head>
   <body>
-    <h1 class="title">쁘밍의 게임 룰렛</h1>
-    <div class="canvas-wrap">
-      <canvas width="500" height="500"></canvas>
+    <div class="container">
+      <button onclick="rotate()">회전</button>
+      <div class="wrapper">
+        <h1 class="title">룰렛</h1>
+        <div class="canvas-wrap">
+          <canvas width="500" height="500"></canvas>
+        </div>
+      </div>
+      <div class="input-area">
+        <div class="product-info">
+          <input type="text" />
+          <input type="number" />
+          <button class="add-button" onclick="addProduct('테스트')">추가</button>
+          <button class="add-button" onclick="subProduct('테스트')">빼기</button>
+        </div>
+      </div>
     </div>
-    <button onclick="rotate()">돌리기</button>
-    <button onclick="addProduct('테스트')">추가 테스트</button>
-    <script src="./color.js"></script>
-    <script src="./spinner.js"></script>
+    <script src="./js/color.js"></script>
+    <script src="./js/product.js"></script>
+    <script src="./js/spinner.js"></script>
   </body>
 </html>
