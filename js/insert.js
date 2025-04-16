@@ -1,6 +1,6 @@
 const $inputArea = document.querySelector(".input-area");
 
-let keySize = localStorage.getItem("key-size") ?? 3;
+let keySize = localStorage.getItem("key-size") ? +localStorage.getItem("key-size") : 3;
 
 const createInsertArea = ({ name, size, key }) => {
   const wrapper = document.createElement("div");
@@ -46,6 +46,8 @@ const addInsert = () => {
   $inputArea.append(inputEl);
   initProduct();
   draw(0);
+
+  console.log(keySize);
 
   keySize += 1;
   localStorage.setItem("key-size", keySize);

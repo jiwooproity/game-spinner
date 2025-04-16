@@ -1,6 +1,6 @@
 const products = new Map([
-  ["1", { name: "쁘밍", size: 1, color: "#F1E7E7" }],
-  ["2", { name: "조아", size: 1, color: "#E69DB8" }],
+  ["1", { name: "쁘", size: 1, color: "#F1E7E7" }],
+  ["2", { name: "밍", size: 1, color: "#E69DB8" }],
   // ["옵션 3", { size: 6, color: "#F1E7E7" }],
   // ["옵션 4", { size: 10, color: "#E69DB8" }],
   // ["옵션 5", { size: 4, color: "#F1E7E7" }],

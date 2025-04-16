@@ -21,6 +21,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+}
+
+#confetti {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 999;
 }
 
 .container {
@@ -62,21 +70,86 @@ body {
   color: black;
 }
 
+.result-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  padding: 20px 30px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
 canvas {
   /* rotate: -90deg; */
   pointer-events: none;
 }
 
 .right-area {
-  width: 100%;
+  width: 520px;
+  height: 100%;
+  padding: 20px 0px;
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 5px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  background-color: white;
+  overflow: scroll;
+  transition: right 1s ease;
+}
+
+.right-area::-webkit-scrollbar {
+  width: 5px;
+}
+
+.right-area::-webkit-scrollbar-thumb {
+  background-color: rgb(230, 157, 184);
+}
+
+.right-area.close {
+  right: -520px;
+}
+
+.right-area-opener {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  letter-spacing: 5px;
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: bold;
+  position: absolute;
+  width: 40px;
+  height: 90px;
+  top: 50%;
+  right: 520px;
+  color: rgb(230, 157, 184);
+  transform: translateY(-50%);
+  border-radius: 5px 0px 0px 5px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.15) -6px 2px 8px 0px;
+  z-index: 5;
+  transition: right 1s ease;
+  cursor: pointer;
+}
+
+.right-area-opener.close {
+  right: 0px;
 }
 
 .input-area {
+  width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -94,7 +167,7 @@ canvas {
   line-height: 14px;
   width: 200px;
   padding: 8px 10px;
-  border: 1px solid rgba(54, 54, 54, 0.5);
+  border: 1px solid rgba(54, 54, 54, 0.2);
   border-radius: 2px;
 }
 
@@ -121,7 +194,7 @@ canvas {
 .add-btn {
   font-size: 14px;
   line-height: 14px;
-  width: 100%;
+  width: 460px;
   padding: 15px 0px;
   border: none;
   border-radius: 2px;
@@ -138,7 +211,7 @@ canvas {
 .download-btn {
   font-size: 14px;
   line-height: 14px;
-  width: 100%;
+  width: 460px;
   padding: 15px 0px;
   border: none;
   border-radius: 2px;
@@ -152,49 +225,60 @@ canvas {
   background-color: #df6f98;
 }
 
-.rotate-btn {
-  width: 80px;
-  height: 80px;
-  position: absolute;
-  font-size: 18px;
-  line-height: 18px;
-  padding: 10px 12px;
-  border: none;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 1);
-  color: rgba(54, 54, 54, 1);
-  cursor: pointer;
-  transition: all 0.5s ease;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
-    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+.rotate {
+  opacity: 1;
+  pointer-events: all;
 }
 
-.stop-btn {
-  width: 80px;
-  height: 80px;
-  position: absolute;
-  font-size: 18px;
-  line-height: 18px;
-  padding: 10px 12px;
-  border: none;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 1);
-  color: rgba(54, 54, 54, 1);
-  cursor: pointer;
-  transition: all 0.5s ease;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
+.stop {
   opacity: 0;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
-    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  pointer-events: none;
 }
 
-.rotate-btn:hover,
-stop.btn:hover {
-  background-color: white;
+.spinner-btn {
+  background-image: -webkit-linear-gradient(top, #f4f1ee, #fff);
+  background-image: linear-gradient(top, #f4f1ee, #fff);
+  border-radius: 50%;
+  box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.3), inset 0px 4px 1px 1px white,
+    inset 0px -3px 1px 1px rgba(204, 198, 197, 0.5);
+  float: left;
+  height: 70px;
+  margin: 0 30px 30px 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  -webkit-transition: width height 0.1s linear;
+  transition: width height 0.1s linear;
+  cursor: pointer;
+}
+
+.spinner-btn::after {
+  color: #e9e6e4;
+  content: "";
+  display: block;
+  font-size: 30px;
+  height: 30px;
+  text-decoration: none;
+  text-shadow: 0px -1px 1px #bdb5b4, 1px 1px 1px white;
+  position: absolute;
+  width: 30px;
+}
+
+.spinner-btn:hover {
+  background-image: -webkit-linear-gradient(top, #fff, #f4f1ee);
+  background-image: linear-gradient(top, #fff, #f4f1ee);
+}
+
+.spinner-btn:active {
+  background-image: -webkit-linear-gradient(top, #efedec, #f7f4f4);
+  background-image: linear-gradient(top, #efedec, #f7f4f4);
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.4), inset 0px -3px 1px 1px rgba(204, 198, 197, 0.5);
+}
+
+.spinner-btn:active:after {
+  color: #dbd2d2;
+  text-shadow: 0px -1px 1px #bdb5b4, 0px 1px 1px white;
 }
