@@ -1,6 +1,6 @@
 const $inputArea = document.querySelector(".input-area");
 
-let keySize = localStorage.getItem("key-size") ? +localStorage.getItem("key-size") : 3;
+let keySize = localStorage.getItem("key-size") ? +localStorage.getItem("key-size") : 5;
 
 const createInsertArea = ({ name, size, key }) => {
   const wrapper = document.createElement("div");
@@ -8,6 +8,7 @@ const createInsertArea = ({ name, size, key }) => {
   wrapper.id = key;
 
   const nameInput = document.createElement("input");
+  nameInput.id = "name";
   nameInput.type = "text";
   nameInput.key = key;
   nameInput.value = name;
@@ -15,17 +16,25 @@ const createInsertArea = ({ name, size, key }) => {
   nameInput.addEventListener("change", changeName);
 
   const sizeInput = document.createElement("input");
+  sizeInput.id = "number";
   sizeInput.type = "number";
   sizeInput.key = key;
   sizeInput.value = size;
   sizeInput.addEventListener("change", changeSize);
+
+  const percent = document.createElement("input");
+  percent.id = "percent";
+  percent.name = `percent-${key}`;
+  percent.type = "text";
+  percent.value = "0%";
+  percent.readOnly = "true";
 
   const deleteBtn = document.createElement("button");
   deleteBtn.innerText = "지우기";
   deleteBtn.key = key;
   deleteBtn.addEventListener("click", deleteProduct);
 
-  wrapper.append(nameInput, sizeInput, deleteBtn);
+  wrapper.append(nameInput, sizeInput, percent, deleteBtn);
 
   return wrapper;
 };
@@ -46,8 +55,6 @@ const addInsert = () => {
   $inputArea.append(inputEl);
   initProduct();
   draw(0);
-
-  console.log(keySize);
 
   keySize += 1;
   localStorage.setItem("key-size", keySize);

@@ -1,12 +1,8 @@
 const products = new Map([
   ["1", { name: "쁘", size: 1, color: "#F1E7E7" }],
   ["2", { name: "밍", size: 1, color: "#E69DB8" }],
-  // ["옵션 3", { size: 6, color: "#F1E7E7" }],
-  // ["옵션 4", { size: 10, color: "#E69DB8" }],
-  // ["옵션 5", { size: 4, color: "#F1E7E7" }],
-  // ["옵션 6", { size: 5, color: "#E69DB8" }],
-  // ["옵션 7", { size: 2, color: "#F1E7E7" }],
-  // ["옵션 8", { size: 8, color: "#E69DB8" }],
+  ["3", { name: "룰", size: 1, color: "#FFD0C7" }],
+  ["4", { name: "렛", size: 1, color: "#E69DB8" }],
 ]);
 
 const viewItems = [];
@@ -16,6 +12,11 @@ const initProduct = () => {
 
   products.forEach((info) => {
     viewItems.push(...Array.from({ length: info.size }).fill(info.name));
+  });
+
+  [...products.keys()].forEach((key) => {
+    const percentEl = document.querySelector(`input[name='percent-${key}']`);
+    percentEl.value = `${((products.get(key).size / viewItems.length) * 100).toFixed(1)}%`;
   });
 
   localStorage.setItem("data-keys", JSON.stringify([...products.keys()]));
