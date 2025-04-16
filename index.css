@@ -88,18 +88,20 @@ canvas {
   pointer-events: none;
 }
 
+.right-area-title {
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
 .right-area {
   width: 520px;
   height: 100%;
-  padding: 20px 0px;
   position: absolute;
   top: 50%;
   right: 0px;
   transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 5px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
   background-color: white;
@@ -148,6 +150,16 @@ canvas {
   right: 0px;
 }
 
+.insert-area {
+  height: 100%;
+  padding: 20px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  gap: 5px;
+}
+
 .input-area {
   width: 500px;
   display: flex;
@@ -162,11 +174,29 @@ canvas {
   gap: 2px;
 }
 
-.product-info input {
+.product-info > input[id="name"] {
   font-size: 14px;
   line-height: 14px;
-  width: 200px;
+  width: 300px;
   padding: 8px 10px;
+  border: 1px solid rgba(54, 54, 54, 0.2);
+  border-radius: 2px;
+}
+
+.product-info > input[id="number"] {
+  text-align: center;
+  font-size: 14px;
+  line-height: 14px;
+  width: 50px;
+  border: 1px solid rgba(54, 54, 54, 0.2);
+  border-radius: 2px;
+}
+
+.product-info > input[id="percent"] {
+  text-align: center;
+  font-size: 14px;
+  line-height: 14px;
+  width: 50px;
   border: 1px solid rgba(54, 54, 54, 0.2);
   border-radius: 2px;
 }
