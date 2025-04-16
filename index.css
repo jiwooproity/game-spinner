@@ -18,7 +18,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 100px;
 }
 
 .wrapper {
@@ -26,7 +26,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 30px;
 }
 
 .canvas-wrap {
@@ -53,8 +53,17 @@ body {
 }
 
 canvas {
-  rotate: -90deg;
+  /* rotate: -90deg; */
   pointer-events: none;
+}
+
+.right-area {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 
 .input-area {
@@ -62,16 +71,85 @@ canvas {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 5px;
 }
 
 .product-info {
   display: flex;
+  gap: 2px;
 }
 
 .product-info input {
-  width: 80px;
+  width: 200px;
+  padding: 5px 8px;
+  border: 1px solid rgba(54, 54, 54, 0.5);
+  border-radius: 2px;
 }
 
-.add-button {
-  width: 30px;
+.product-info input:focus {
+  outline: none;
+}
+
+.product-info button {
+  padding: 5px 8px;
+  background-color: #e69db8;
+  border: none;
+  border-radius: 2px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.product-info button:hover {
+  background-color: #df6f98;
+}
+
+.add-btn {
+  font-size: 14px;
+  line-height: 14px;
+  width: 100%;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 2px;
+  background-color: #e69db8;
+  color: white;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.add-btn:hover {
+  background-color: #df6f98;
+}
+
+.download-btn {
+  font-size: 14px;
+  line-height: 14px;
+  width: 100%;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 2px;
+  background-color: #e69db8;
+  color: white;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.download-btn:hover {
+  background-color: #df6f98;
+}
+
+.rotate-btn {
+  font-size: 18px;
+  line-height: 18px;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 2px;
+  background-color: #e69db8;
+  color: white;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.rotate-btn:hover {
+  background-color: #df6f98;
 }

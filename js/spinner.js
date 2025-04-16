@@ -1,8 +1,38 @@
 const $canvas = document.querySelector("canvas");
 const ctx = $canvas.getContext("2d");
 
+let resultAngle = 0;
+
 const getTotalSize = () => {
   return products.values().reduce((a, b) => a + b.size, 0);
+};
+
+const getImage = () => {
+  const date = new Date();
+  const today = `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
+  const link = document.createElement("a");
+
+  const image = $canvas.toDataURL("image/jpeg");
+  const myImage = new Image();
+  myImage.src = image;
+
+  myImage.onload = () => {
+    const $imgCanavas = document.createElement("canvas");
+    const imgCtx = $imgCanavas.getContext("2d");
+
+    $imgCanavas.width = $canvas.width;
+    $imgCanavas.height = $canvas.height;
+
+    imgCtx.translate($imgCanavas.width / 2, $imgCanavas.height / 2);
+    imgCtx.rotate((resultAngle * Math.PI) / 180);
+    imgCtx.translate(-$imgCanavas.width / 2, -$imgCanavas.height / 2);
+
+    imgCtx.drawImage(myImage, 0, 0, $imgCanavas.width, $imgCanavas.height);
+
+    link.href = $imgCanavas.toDataURL("image/jpeg");
+    link.download = `쁘밍's_룰렛_${today}`;
+    link.click();
+  };
 };
 
 const draw = (angle) => {
@@ -25,7 +55,7 @@ const draw = (angle) => {
     ctx.textAlign = "left";
     ctx.fillStyle = "#000000";
     ctx.font = "bold 15px Arial";
-    ctx.strokeStyle = "#000000";
+    ctx.strokeStyle = "#949494";
     ctx.stroke();
 
     ctx.save();
@@ -34,7 +64,7 @@ const draw = (angle) => {
       ch + Math.sin(angle + arc / 2) * (ch - 120)
     );
     ctx.rotate(angle + arc / 2 + Math.PI * 2);
-    ctx.fillText(keys[i], -30, 5);
+    ctx.fillText(products.get(keys[i]).name, -80, 5);
     ctx.restore();
 
     angle += arc;
@@ -46,6 +76,8 @@ const rotate = () => {
   const degree = 360 / length;
   const random = Math.floor(Math.random() * viewItems.length);
   const rotate = -degree * random - Math.random() * (degree / 2) + 36000;
+  resultAngle = rotate;
+  console.log(resultAngle);
 
   $canvas.style.transform = "initial";
   $canvas.style.transition = "initial";
@@ -61,6 +93,12 @@ const rotate = () => {
 };
 
 addEventListener("DOMContentLoaded", () => {
+  const [cw, ch] = [$canvas.width / 2, $canvas.height / 2];
+
+  ctx.translate(cw, ch);
+  ctx.rotate((-90 * Math.PI) / 180);
+  ctx.translate(-cw, -ch);
+
   draw(0);
   initProduct();
 });
