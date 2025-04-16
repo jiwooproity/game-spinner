@@ -1,11 +1,17 @@
-const $canvas = document.querySelector("canvas");
+const $canvas = document.getElementById("spinner");
 const ctx = $canvas.getContext("2d");
 
-const $rotateButton = document.querySelector(".rotate-btn");
-const $stopButton = document.querySelector(".stop-btn");
+const $resultText = document.querySelector(".result");
+
+const $rotateButton = document.querySelector(".rotate");
+const $stopButton = document.querySelector(".stop");
 
 let resultAngle = 0;
 let isSpinning = false;
+let roll = 0;
+let angl = 0;
+let rotatating = null;
+let stopped = false;
 
 const getTotalSize = () => {
   return products.values().reduce((a, b) => a + b.size, 0);
@@ -15,28 +21,9 @@ const getImage = () => {
   const date = new Date();
   const today = `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
   const link = document.createElement("a");
-
-  const image = $canvas.toDataURL("image/jpeg");
-  const myImage = new Image();
-  myImage.src = image;
-
-  myImage.onload = () => {
-    const $imgCanavas = document.createElement("canvas");
-    const imgCtx = $imgCanavas.getContext("2d");
-
-    $imgCanavas.width = $canvas.width;
-    $imgCanavas.height = $canvas.height;
-
-    imgCtx.translate($imgCanavas.width / 2, $imgCanavas.height / 2);
-    imgCtx.rotate((resultAngle * Math.PI) / 180);
-    imgCtx.translate(-$imgCanavas.width / 2, -$imgCanavas.height / 2);
-
-    imgCtx.drawImage(myImage, 0, 0, $imgCanavas.width, $imgCanavas.height);
-
-    link.href = $imgCanavas.toDataURL("image/jpeg");
-    link.download = `쁘밍's_룰렛_${today}`;
-    link.click();
-  };
+  link.href = $canvas.toDataURL("image/jpeg");
+  link.download = `쁘밍's_룰렛_${today}`;
+  link.click();
 };
 
 const draw = (angle) => {
@@ -75,41 +62,69 @@ const draw = (angle) => {
   }
 };
 
+const controlSpinBtn = (switched) => {
+  $rotateButton.style.opacity = switched ? 0 : 1;
+  $rotateButton.style.pointerEvents = switched ? "none" : "all";
+  $stopButton.style.opacity = switched ? 1 : 0;
+  $stopButton.style.pointerEvents = switched ? "all" : "none";
+};
+
 const rotate = () => {
-  $canvas.style.animation = "1s infinite linear rotate";
-  $rotateButton.style.opacity = 0;
-  $rotateButton.style.pointerEvents = "none";
-  $stopButton.style.opacity = 1;
-  $stopButton.style.pointerEvents = "all";
-  isSpinning = true;
+  controlSpinBtn(true);
+  closeSubMenu();
+
+  const [cw, ch] = [$canvas.width / 2, $canvas.height / 2];
+
+  if (stopped) {
+    if (roll > 5) {
+      roll -= 0.05;
+    } else if (roll > 0) {
+      roll -= 0.005;
+    } else {
+      outputResult();
+      return;
+    }
+
+    angl += roll;
+  } else {
+    if (roll < 36) {
+      roll += 1;
+    }
+
+    angl += roll;
+  }
+
+  ctx.translate(cw, ch);
+  ctx.rotate((roll * Math.PI) / 180);
+  ctx.translate(-cw, -ch);
+
+  const result = calculateResult();
+  $resultText.innerText = `${viewItems[result]}`;
+
+  draw(0);
+  rotatating = requestAnimationFrame(rotate);
+};
+
+const calculateResult = () => {
+  const totalRap = angl % 360;
+  const avgAngle = 360 / viewItems.length;
+  const notMarginTotal = 360 - totalRap;
+  const result = Math.floor(notMarginTotal / avgAngle);
+  return result;
+};
+
+const outputResult = () => {
+  stopped = false;
+  controlSpinBtn(false);
+
+  const result = calculateResult();
+  $resultText.innerText = `${viewItems[result]}`;
+
+  congratulations();
 };
 
 const stop = () => {
-  const length = viewItems.length;
-  const degree = 360 / length;
-  const random = Math.floor(Math.random() * viewItems.length);
-  const rotate = -degree * random - Math.random() * (degree / 2) + 36000;
-
-  $canvas.style.transform = "initial";
-  $canvas.style.transition = "initial";
-  $canvas.style.animation = "initial";
-
-  setTimeout(() => {
-    $canvas.style.transform = `rotate(${rotate}deg)`;
-    $canvas.style.transition = "15s cubic-bezier(0, 0, 0, 1)";
-  }, 1);
-
-  setTimeout(() => {
-    alert(viewItems[random]);
-    $rotateButton.style.pointerEvents = "all";
-    isSpinning = false;
-  }, 16000);
-
-  resultAngle = rotate;
-
-  $rotateButton.style.opacity = 1;
-  $stopButton.style.opacity = 0;
-  $stopButton.style.pointerEvents = "none";
+  stopped = true;
 };
 
 addEventListener("DOMContentLoaded", () => {
