@@ -1,28 +1,8 @@
 const $canvas = document.querySelector("canvas");
 const ctx = $canvas.getContext("2d");
 
-const products = new Map([
-  ["옵션 1", 1],
-  ["옵션 2", 1],
-]);
-
-const viewItems = [];
-
-const addProduct = (product) => {
-  products.set(product, products.get(product) ? products.get(product) + 1 : 1);
-  draw(0);
-};
-
-const plusSize = (product) => {
-  products.set(product, products.get(product) + 1);
-};
-
-const subSize = (product) => {
-  products.set(product, products.get(product) > 0 ? products.get(product) - 1 : 0);
-};
-
 const getTotalSize = () => {
-  return products.values().reduce((a, b) => a + b, 0);
+  return products.values().reduce((a, b) => a + b.size, 0);
 };
 
 const draw = (angle) => {
@@ -33,18 +13,17 @@ const draw = (angle) => {
   const keys = [...products.keys()];
 
   for (let i = 0; i < keys.length; i++) {
-    const arc = radian * products.get(keys[i]);
+    const arc = radian * products.get(keys[i]).size;
 
     ctx.beginPath();
-    ctx.fillStyle = "#FFFFFF";
+    ctx.fillStyle = products.get(keys[i]).color;
     ctx.moveTo(cw, ch);
     ctx.arc(cw, ch, cw - 10, angle, angle + arc);
     ctx.fill();
     ctx.closePath();
 
-    ctx.textAlign = "center";
+    ctx.textAlign = "left";
     ctx.fillStyle = "#000000";
-    ctx;
     ctx.font = "bold 15px Arial";
     ctx.strokeStyle = "#000000";
     ctx.stroke();
@@ -55,11 +34,33 @@ const draw = (angle) => {
       ch + Math.sin(angle + arc / 2) * (ch - 120)
     );
     ctx.rotate(angle + arc / 2 + Math.PI * 2);
-    ctx.fillText(keys[i], 0, 0);
+    ctx.fillText(keys[i], -30, 5);
     ctx.restore();
 
     angle += arc;
   }
 };
 
-window.addEventListener("DOMContentLoaded", () => draw(0));
+const rotate = () => {
+  const length = viewItems.length;
+  const degree = 360 / length;
+  const random = Math.floor(Math.random() * viewItems.length);
+  const rotate = -degree * random - Math.random() * (degree / 2) + 36000;
+
+  $canvas.style.transform = "initial";
+  $canvas.style.transition = "initial";
+
+  setTimeout(() => {
+    $canvas.style.transform = `rotate(${rotate}deg)`;
+    $canvas.style.transition = "15s cubic-bezier(0, 0, 0, 1)";
+  }, 1);
+
+  setTimeout(() => {
+    alert(viewItems[random]);
+  }, 16000);
+};
+
+addEventListener("DOMContentLoaded", () => {
+  draw(0);
+  initProduct();
+});
