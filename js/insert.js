@@ -1,6 +1,6 @@
 const $inputArea = document.querySelector(".input-area");
 
-let keySize = 3;
+let keySize = localStorage.getItem("key-size") ?? 3;
 
 const createInsertArea = ({ name, size, key }) => {
   const wrapper = document.createElement("div");
@@ -31,6 +31,11 @@ const createInsertArea = ({ name, size, key }) => {
 };
 
 const addInsert = () => {
+  if (isSpinning) {
+    alert("아직 추첨이 진행되고 있어요!");
+    return;
+  }
+
   const name = ``;
   const size = 1;
   const color = getColor();
@@ -43,11 +48,20 @@ const addInsert = () => {
   draw(0);
 
   keySize += 1;
+  localStorage.setItem("key-size", keySize);
 };
 
 const onLoad = () => {
-  const currentValues = [...products.values()];
-  const keys = [...products.keys()];
+  let currentValues = [];
+  let keys = [];
+
+  if (localStorage.getItem("data-keys")) {
+    currentValues = JSON.parse(localStorage.getItem("data-values"));
+    keys = JSON.parse(localStorage.getItem("data-keys"));
+  } else {
+    currentValues = [...products.values()];
+    keys = [...products.keys()];
+  }
 
   const inputEls = currentValues.map((value, index) => {
     return createInsertArea({ name: value.name, size: value.size, key: keys[index] });

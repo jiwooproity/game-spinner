@@ -4,6 +4,16 @@
   box-sizing: border-box;
 }
 
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(3960deg);
+  }
+}
+
 html,
 body {
   width: 100%;
@@ -80,8 +90,10 @@ canvas {
 }
 
 .product-info input {
+  font-size: 14px;
+  line-height: 14px;
   width: 200px;
-  padding: 5px 8px;
+  padding: 8px 10px;
   border: 1px solid rgba(54, 54, 54, 0.5);
   border-radius: 2px;
 }
@@ -91,7 +103,9 @@ canvas {
 }
 
 .product-info button {
-  padding: 5px 8px;
+  font-size: 14px;
+  line-height: 14px;
+  padding: 8px 10px;
   background-color: #e69db8;
   border: none;
   border-radius: 2px;
@@ -108,7 +122,7 @@ canvas {
   font-size: 14px;
   line-height: 14px;
   width: 100%;
-  padding: 8px 10px;
+  padding: 15px 0px;
   border: none;
   border-radius: 2px;
   background-color: #e69db8;
@@ -125,7 +139,7 @@ canvas {
   font-size: 14px;
   line-height: 14px;
   width: 100%;
-  padding: 8px 10px;
+  padding: 15px 0px;
   border: none;
   border-radius: 2px;
   background-color: #e69db8;
@@ -139,17 +153,48 @@ canvas {
 }
 
 .rotate-btn {
+  width: 80px;
+  height: 80px;
+  position: absolute;
   font-size: 18px;
   line-height: 18px;
   padding: 10px 12px;
   border: none;
-  border-radius: 2px;
-  background-color: #e69db8;
-  color: white;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 1);
+  color: rgba(54, 54, 54, 1);
   cursor: pointer;
   transition: all 0.5s ease;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
-.rotate-btn:hover {
-  background-color: #df6f98;
+.stop-btn {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  font-size: 18px;
+  line-height: 18px;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 1);
+  color: rgba(54, 54, 54, 1);
+  cursor: pointer;
+  transition: all 0.5s ease;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.rotate-btn:hover,
+stop.btn:hover {
+  background-color: white;
 }

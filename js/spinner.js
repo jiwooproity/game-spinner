@@ -1,7 +1,11 @@
 const $canvas = document.querySelector("canvas");
 const ctx = $canvas.getContext("2d");
 
+const $rotateButton = document.querySelector(".rotate-btn");
+const $stopButton = document.querySelector(".stop-btn");
+
 let resultAngle = 0;
+let isSpinning = false;
 
 const getTotalSize = () => {
   return products.values().reduce((a, b) => a + b.size, 0);
@@ -64,7 +68,7 @@ const draw = (angle) => {
       ch + Math.sin(angle + arc / 2) * (ch - 120)
     );
     ctx.rotate(angle + arc / 2 + Math.PI * 2);
-    ctx.fillText(products.get(keys[i]).name, -80, 5);
+    ctx.fillText(products.get(keys[i]).name, -60, 5);
     ctx.restore();
 
     angle += arc;
@@ -72,15 +76,23 @@ const draw = (angle) => {
 };
 
 const rotate = () => {
+  $canvas.style.animation = "1s infinite linear rotate";
+  $rotateButton.style.opacity = 0;
+  $rotateButton.style.pointerEvents = "none";
+  $stopButton.style.opacity = 1;
+  $stopButton.style.pointerEvents = "all";
+  isSpinning = true;
+};
+
+const stop = () => {
   const length = viewItems.length;
   const degree = 360 / length;
   const random = Math.floor(Math.random() * viewItems.length);
   const rotate = -degree * random - Math.random() * (degree / 2) + 36000;
-  resultAngle = rotate;
-  console.log(resultAngle);
 
   $canvas.style.transform = "initial";
   $canvas.style.transition = "initial";
+  $canvas.style.animation = "initial";
 
   setTimeout(() => {
     $canvas.style.transform = `rotate(${rotate}deg)`;
@@ -89,7 +101,15 @@ const rotate = () => {
 
   setTimeout(() => {
     alert(viewItems[random]);
+    $rotateButton.style.pointerEvents = "all";
+    isSpinning = false;
   }, 16000);
+
+  resultAngle = rotate;
+
+  $rotateButton.style.opacity = 1;
+  $stopButton.style.opacity = 0;
+  $stopButton.style.pointerEvents = "none";
 };
 
 addEventListener("DOMContentLoaded", () => {
