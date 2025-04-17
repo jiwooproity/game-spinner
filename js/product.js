@@ -1,8 +1,6 @@
 const products = new Map([
-  ["1", { name: "쁘", size: 1, color: "#F1E7E7" }],
-  ["2", { name: "밍", size: 1, color: "#E69DB8" }],
-  ["3", { name: "룰", size: 1, color: "#FFD0C7" }],
-  ["4", { name: "렛", size: 1, color: "#E69DB8" }],
+  ["1", { name: "", size: 1, color: "#F1E7E7" }],
+  ["2", { name: "", size: 1, color: "#E69DB8" }],
 ]);
 
 const viewItems = [];
