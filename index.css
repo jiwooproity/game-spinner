@@ -1,17 +1,19 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+@import url('https://fonts.googleapis.com/css2?family=Jersey+15&family=Noto+Sans+KR:wght@100..900&display=swap');
+
+@font-face {
+  font-family: "neodgm";
+  src: url("./fonts/neodgm.woff2") format("woff2"),
+    url("./fonts/neodgm.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(3960deg);
-  }
+  font-family: "neodgm"
 }
 
 html,
@@ -22,6 +24,30 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-image: url(./images/background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  opacity: 0.1;
+  z-index: -2;
+}
+
+.backdrop {
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  position: absolute;
+  backdrop-filter: blur(100px);
+  z-index: -1;
 }
 
 #confetti {
@@ -44,7 +70,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+  gap: 25px;
 }
 
 .canvas-wrap {
@@ -54,19 +80,23 @@ body {
 .canvas-wrap:before {
   content: "";
   position: absolute;
-  top: 0px;
+  top: -14px;
   left: 50%;
   transform: translateX(-50%);
-  width: 8px;
-  height: 30px;
   border-radius: 15px;
-  background-color: black;
   z-index: 999;
+  width: 50px;
+  height: 50px;
+  background-image: url(./images/spinner-stop-arrow.svg);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: 50px;
 }
 
 .title {
   font-size: 25px;
   line-height: 25px;
+  font-weight: bold;
   color: black;
 }
 
@@ -75,13 +105,18 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 250px;
+  width: 260px;
   height: 64px;
   padding: 20px 30px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(54, 54, 54, 1);
+  color: rgba(54, 54, 54, 1);
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 3px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.result-box > span {
+  font-family: "neodgm"
 }
 
 canvas {
@@ -104,8 +139,8 @@ canvas {
   right: 0px;
   transform: translateY(-50%);
   gap: 5px;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
-  background-color: white;
+  border-left: 0.5px solid rgba(54, 54, 54, 0.1);
+  background-color: rgba(255, 255, 255, 0.5);
   overflow: scroll;
   transition: right 1s ease;
 }
@@ -115,7 +150,7 @@ canvas {
 }
 
 .right-area::-webkit-scrollbar-thumb {
-  background-color: rgb(230, 157, 184);
+  background-color: "#e97ba3";
 }
 
 .right-area.close {
@@ -134,26 +169,33 @@ canvas {
   font-weight: bold;
   position: absolute;
   width: 40px;
-  height: 90px;
+  height: 70px;
   top: 50%;
-  right: 520px;
-  color: rgb(230, 157, 184);
+  right: 519px;
+  color: #e97ba3;
   transform: translateY(-50%);
   border-radius: 5px 0px 0px 5px;
-  background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.15) -6px 2px 8px 0px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-left: 0.5px solid rgba(54, 54, 54, 0.1);
+  border-top: 0.5px solid rgba(54, 54, 54, 0.1);
+  border-bottom: 0.5px solid rgba(54, 54, 54, 0.1);
+  background-image: url(./images/arrow-right.svg);
+  background-position: 60% 50%;
+  background-repeat: no-repeat;
+  background-size: 20px;
   z-index: 5;
   transition: right 1s ease;
   cursor: pointer;
 }
 
 .right-area-opener.close {
+  background-image: url(./images/arrow-left.svg);
   right: 0px;
 }
 
 .insert-area {
   height: 100%;
-  padding: 20px 0px;
+  padding: 60px 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -162,7 +204,8 @@ canvas {
 }
 
 .input-area {
-  width: 500px;
+  width: 100%;
+  padding: 0px 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -171,17 +214,19 @@ canvas {
 }
 
 .product-info {
+  width: 100%;
   display: flex;
+  justify-content: center;
   gap: 2px;
 }
 
 .product-info > input[id="name"] {
   font-size: 14px;
   line-height: 14px;
-  width: 300px;
   padding: 8px 10px;
+  width: 270px;
   border: 1px solid rgba(54, 54, 54, 0.2);
-  border-radius: 2px;
+  border-radius: 3px;
 }
 
 .product-info > input[id="number"] {
@@ -190,16 +235,16 @@ canvas {
   line-height: 14px;
   width: 50px;
   border: 1px solid rgba(54, 54, 54, 0.2);
-  border-radius: 2px;
+  border-radius: 3px;
 }
 
 .product-info > input[id="percent"] {
   text-align: center;
   font-size: 14px;
   line-height: 14px;
-  width: 50px;
+  width: 60px;
   border: 1px solid rgba(54, 54, 54, 0.2);
-  border-radius: 2px;
+  border-radius: 3px;
 }
 
 .product-info input:focus {
@@ -210,50 +255,50 @@ canvas {
   font-size: 14px;
   line-height: 14px;
   padding: 8px 10px;
-  background-color: #e69db8;
+  background-color: #e97ba3;
   border: none;
-  border-radius: 2px;
+  border-radius: 3px;
   color: white;
   cursor: pointer;
   transition: all 0.5s ease;
 }
 
 .product-info button:hover {
-  background-color: #df6f98;
+  background-color: #dc628f;
 }
 
 .add-btn {
   font-size: 14px;
   line-height: 14px;
-  width: 460px;
+  width: 448px;
   padding: 15px 0px;
   border: none;
-  border-radius: 2px;
-  background-color: #e69db8;
+  border-radius: 3px;
+  background-color: #e97ba3;
   color: white;
   cursor: pointer;
   transition: all 0.5s ease;
 }
 
 .add-btn:hover {
-  background-color: #df6f98;
+  background-color: #dc628f;
 }
 
 .download-btn {
   font-size: 14px;
   line-height: 14px;
-  width: 460px;
+  width: 448px;
   padding: 15px 0px;
   border: none;
-  border-radius: 2px;
-  background-color: #e69db8;
+  border-radius: 3px;
+  background-color: #e97ba3;
   color: white;
   cursor: pointer;
   transition: all 0.5s ease;
 }
 
 .download-btn:hover {
-  background-color: #df6f98;
+  background-color: #dc628f;
 }
 
 .rotate {
@@ -270,7 +315,7 @@ canvas {
   background-image: -webkit-linear-gradient(top, #f4f1ee, #fff);
   background-image: linear-gradient(top, #f4f1ee, #fff);
   border-radius: 50%;
-  box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.3), inset 0px 4px 1px 1px white,
+  box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.2), inset 0px 4px 1px 1px white,
     inset 0px -3px 1px 1px rgba(204, 198, 197, 0.5);
   float: left;
   height: 70px;
@@ -283,6 +328,7 @@ canvas {
   height: 80px;
   -webkit-transition: width height 0.1s linear;
   transition: width height 0.1s linear;
+  font-size: 16px;
   cursor: pointer;
 }
 

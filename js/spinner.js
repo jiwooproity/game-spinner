@@ -32,6 +32,8 @@ const draw = (angle) => {
   const radian = ((360 / totalSize) * Math.PI) / 180;
 
   const keys = [...products.keys()];
+  
+  ctx.clearRect(0, 0, $canvas.width, $canvas.height)
 
   for (let i = 0; i < keys.length; i++) {
     const arc = radian * products.get(keys[i]).size;
@@ -45,8 +47,9 @@ const draw = (angle) => {
 
     ctx.textAlign = "left";
     ctx.fillStyle = "#000000";
-    ctx.font = "bold 15px Arial";
-    ctx.strokeStyle = "#949494";
+    ctx.lineWidth = 0.5;
+    ctx.font = "bold 15px neodgm";
+    ctx.strokeStyle = "#000000";
     ctx.stroke();
 
     ctx.save();

@@ -10,11 +10,13 @@
   </head>
   <body>
     <div class="container">
+      <div class="background"></div>
+      <div class="backdrop"></div>
       <canvas id="confetti"></canvas>
       <div class="wrapper">
         <h1 class="title">쁘밍의 게임 룰렛</h1>
         <div class="result-box">
-          <p class="result">결과는 ..?</p>
+          <span class="result">오늘의 게임은 ..?!</p>
         </div>
         <div class="canvas-wrap">
           <canvas id="spinner" width="500" height="500"></canvas>
@@ -23,7 +25,7 @@
         </div>
         <!-- <button class="rotate-btn" onclick="stop()">멈추기!</button> -->
       </div>
-      <div class="right-area-opener" onclick="switching()">></div>
+      <div class="right-area-opener" onclick="switching()"></div>
       <div class="right-area">
         <div class="insert-area">
           <h2 class="right-area-title">룰렛 목록 관리</h2>

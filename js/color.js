@@ -19,19 +19,5 @@ const getColor = () => {
   const r = Math.floor(Math.random() * 127 + 128).toString(16);
   const g = Math.floor(Math.random() * 127 + 128).toString(16);
   const b = Math.floor(Math.random() * 127 + 128).toString(16);
-
-  // let hex = 0;
-
-  // while (true) {
-  //   hex = Math.floor(Math.random() * COLORS.length);
-
-  //   if (hex !== beforeNumber) {
-  //     break;
-  //   }
-  // }
-
-  // beforeNumber = hex;
-
-  // return COLORS[hex];
   return `#${r}${g}${b}`;
 };
