@@ -19,6 +19,9 @@
           <span class="result">오늘의 게임은 ..?!</p>
         </div>
         <div class="canvas-wrap">
+          <div class="canvas-spinner-arrow">
+            <div class="arrow-bottom"></div>
+          </div>
           <canvas id="spinner" width="500" height="500"></canvas>
           <button class="rotate spinner-btn" onclick="rotate()">SPIN</button>
           <button class="stop spinner-btn" onclick="stop()">STOP</button>
@@ -35,6 +38,7 @@
         </div>
       </div>
     </div>
+    <script src="./lib/html2canvas.js"></script>
     <script src="./js/confetti.js"></script>
     <script src="./js/submenu.js"></script>
     <script src="./js/color.js"></script>

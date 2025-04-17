@@ -17,12 +17,16 @@ const getTotalSize = () => {
   return products.values().reduce((a, b) => a + b.size, 0);
 };
 
-const getImage = () => {
+const getImage = async () => {
   const date = new Date();
   const today = `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
+
+  const captureTarget = document.querySelector(".wrapper");
+  const getCaptureOfDOM = await html2canvas(captureTarget, { scale: 4 });
+
   const link = document.createElement("a");
-  link.href = $canvas.toDataURL("image/jpeg");
-  link.download = `쁘밍's_룰렛_${today}`;
+  link.href = getCaptureOfDOM.toDataURL("image/png");
+  link.download = `쁘밍의_게임_룰렛_${today}.png`;
   link.click();
 };
 
