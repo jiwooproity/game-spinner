@@ -21,3 +21,21 @@
 ## 동작 화면
 
 <img src="/preview/Animation.gif" width="100%" height=""/>
+
+## 라이브러리
+
+|Library|Description|
+|---|---|
+|confetti|파티클 효과를 쉽게 사용이 가능합니다.|
+|html2canvas|DOM을 선택하여 캡처하고, 이미지로 추출이 가능합니다.|
+
+## 폰트
+
+|Fonts|Description|
+|---|---|
+|Neo둥근모|픽셀 폰트, 무료로 사용이 가능한 폰트입니다.|
+
+출처 : https://neodgm.dalgona.dev/downloads/neodgm.html
+
+## DEMO
+[jiwooproity.github.io/game-spinner/](https://jiwooproity.github.io/game-spinner/)
