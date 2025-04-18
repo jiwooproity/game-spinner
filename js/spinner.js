@@ -117,7 +117,6 @@ const rotate = () => {
 };
 
 const calculateResult = () => {
-  console.log(angl);
   const totalRap = angl % 360;
   const avgAngle = 360 / viewItems.length;
   const notMarginTotal = 360 - totalRap;
