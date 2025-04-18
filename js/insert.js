@@ -13,6 +13,7 @@ const createInsertArea = ({ name, size, key }) => {
   nameInput.key = key;
   nameInput.value = name;
   nameInput.placeholder = "게임명 입력";
+  nameInput.autocomplete = "false";
   nameInput.addEventListener("change", changeName);
 
   const sizeInput = document.createElement("input");
@@ -20,6 +21,7 @@ const createInsertArea = ({ name, size, key }) => {
   sizeInput.type = "number";
   sizeInput.key = key;
   sizeInput.value = size;
+  sizeInput.autocomplete = "false";
   sizeInput.addEventListener("change", changeSize);
 
   const percent = document.createElement("input");
