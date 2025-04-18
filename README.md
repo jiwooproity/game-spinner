@@ -16,7 +16,7 @@
 
 ## 화면
 
-![image](https://github.com/user-attachments/assets/a1d4adfb-e946-4b92-b4e4-d1e8fe928aee)
+![image](https://github.com/user-attachments/assets/84f8cc7f-368f-47fe-96e1-e6ff1dbc9c59)
 
 ## 동작 화면
 
