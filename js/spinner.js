@@ -87,8 +87,10 @@ const rotate = () => {
   if (stopped) {
     if (roll > 5) {
       roll -= 0.05;
-    } else if (roll > 0) {
+    } else if (roll > 1) {
       roll -= 0.005;
+    } else if (roll > 0) {
+      roll -= 0.001;
     } else {
       outputResult();
       return;
