@@ -90,7 +90,7 @@ const rotate = () => {
     } else if (roll > 1) {
       roll -= 0.005;
     } else if (roll > 0) {
-      roll -= 0.001;
+      roll -= 0.002;
     } else {
       outputResult();
       return;
@@ -117,6 +117,7 @@ const rotate = () => {
 };
 
 const calculateResult = () => {
+  console.log(angl);
   const totalRap = angl % 360;
   const avgAngle = 360 / viewItems.length;
   const notMarginTotal = 360 - totalRap;
