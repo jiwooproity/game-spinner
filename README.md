@@ -20,4 +20,4 @@
 
 ## 동작 화면
 
-<img src="/preview/Animation.gif" width="250" height="250"/>
+<img src="/preview/Animation.gif" width="100%" height=""/>
