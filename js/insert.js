@@ -1,6 +1,8 @@
 const $inputArea = document.querySelector(".input-area");
 
-let keySize = localStorage.getItem("key-size") ? +localStorage.getItem("key-size") : 5;
+let keySize = localStorage.getItem("key-size")
+  ? +localStorage.getItem("key-size")
+  : 5;
 
 const createInsertArea = ({ name, size, key }) => {
   const wrapper = document.createElement("div");
@@ -75,7 +77,11 @@ const onLoad = () => {
   }
 
   const inputEls = currentValues.map((value, index) => {
-    return createInsertArea({ name: value.name, size: value.size, key: keys[index] });
+    return createInsertArea({
+      name: value.name,
+      size: value.size,
+      key: keys[index],
+    });
   });
 
   $inputArea.append(...inputEls);

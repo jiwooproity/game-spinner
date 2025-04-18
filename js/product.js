@@ -1,5 +1,5 @@
 const products = new Map([
-  ["1", { name: "", size: 1, color: "#F1E7E7" }],
+  ["1", { name: "", size: 1, color: "#FFFFFF" }],
   ["2", { name: "", size: 1, color: "#E69DB8" }],
 ]);
 
@@ -14,7 +14,10 @@ const initProduct = () => {
 
   [...products.keys()].forEach((key) => {
     const percentEl = document.querySelector(`input[name='percent-${key}']`);
-    percentEl.value = `${((products.get(key).size / viewItems.length) * 100).toFixed(1)}%`;
+    percentEl.value = `${(
+      (products.get(key).size / viewItems.length) *
+      100
+    ).toFixed(1)}%`;
   });
 
   localStorage.setItem("data-keys", JSON.stringify([...products.keys()]));

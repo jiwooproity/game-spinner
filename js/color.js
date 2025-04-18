@@ -1,23 +1,26 @@
-let beforeNumber = 0;
+const generate = (hex) => {
+  hex = hex.replace(/^\s*#|\s*$/g, "");
 
-const COLORS = [
-  "#F1E7E7",
-  "#E69DB8",
-  "#FFD0C7",
-  "#FFFECE",
-  "#8F87F1",
-  "#C68EFD",
-  "#E9A5F1",
-  "#FED2E2",
-  "#F7CFD8",
-  "#F4F8D3",
-  "#A6D6D6",
-  "#8E7DBE",
-];
+  // convert 3 char codes --> 6, e.g. `E0F` --> `EE00FF`
+  if (hex.length == 3) {
+    hex = hex.replace(/(.)/g, "$1$1");
+  }
+
+  var r = parseInt(hex.substr(0, 2), 16),
+    g = parseInt(hex.substr(2, 2), 16),
+    b = parseInt(hex.substr(4, 2), 16);
+
+  return (
+    "#" +
+    (0 | ((1 << 8) + r + ((256 - r) * 60) / 100)).toString(16).substr(1) +
+    (0 | ((1 << 8) + g + ((256 - g) * 60) / 100)).toString(16).substr(1) +
+    (0 | ((1 << 8) + b + ((256 - b) * 60) / 100)).toString(16).substr(1)
+  );
+};
 
 const getColor = () => {
   const r = Math.floor(Math.random() * 127 + 128).toString(16);
   const g = Math.floor(Math.random() * 127 + 128).toString(16);
   const b = Math.floor(Math.random() * 127 + 128).toString(16);
-  return `#${r}${g}${b}`;
+  return generate(`#${r}${g}${b}`);
 };

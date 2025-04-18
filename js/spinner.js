@@ -19,7 +19,9 @@ const getTotalSize = () => {
 
 const getImage = async () => {
   const date = new Date();
-  const today = `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
+  const today = `${date.getFullYear()}년 ${
+    date.getMonth() + 1
+  }월 ${date.getDate()}일`;
 
   const captureTarget = document.querySelector(".wrapper");
   const getCaptureOfDOM = await html2canvas(captureTarget, { scale: 4 });
@@ -36,8 +38,8 @@ const draw = (angle) => {
   const radian = ((360 / totalSize) * Math.PI) / 180;
 
   const keys = [...products.keys()];
-  
-  ctx.clearRect(0, 0, $canvas.width, $canvas.height)
+
+  ctx.clearRect(0, 0, $canvas.width, $canvas.height);
 
   for (let i = 0; i < keys.length; i++) {
     const arc = radian * products.get(keys[i]).size;
