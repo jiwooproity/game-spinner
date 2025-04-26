@@ -29,8 +29,8 @@ const resizeSpinner = (event) => {
 const resizeFont = (event) => {
   let { value } = event.target;
 
-  if (value > 40) {
-    value = 40;
+  if (value > 30) {
+    value = 30;
   } else if (value < 15) {
     value = 15;
   }

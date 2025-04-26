@@ -212,9 +212,12 @@ canvas {
 }
 
 .size-input {
-  width: 50px;
+  width: 60px;
   font-size: 15px;
   line-height: 15px;
+  padding: 5px 10px;
+  border: 1px solid rgba(54, 54, 54, 0.2);
+  border-radius: 3px;
 }
 
 .notification-area {
