@@ -13,15 +13,15 @@ let angl = 0;
 let rotatating = null;
 let stopped = false;
 
+let fontSize = localStorage.getItem("font-size") ?? 15;
+
 const getTotalSize = () => {
   return products.values().reduce((a, b) => a + b.size, 0);
 };
 
 const getImage = async () => {
   const date = new Date();
-  const today = `${date.getFullYear()}년 ${
-    date.getMonth() + 1
-  }월 ${date.getDate()}일`;
+  const today = `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
 
   const captureTarget = document.querySelector(".wrapper");
   const getCaptureOfDOM = await html2canvas(captureTarget, { scale: 4 });
@@ -51,12 +51,15 @@ const draw = (angle) => {
     ctx.fill();
     ctx.closePath();
 
-    ctx.textAlign = "left";
-    ctx.fillStyle = "#000000";
     ctx.lineWidth = 0.5;
-    ctx.font = "bold 15px neodgm";
     ctx.strokeStyle = "#000000";
     ctx.stroke();
+
+    angle += arc;
+  }
+
+  for (let i = 0; i < keys.length; i++) {
+    const arc = radian * products.get(keys[i]).size;
 
     ctx.save();
     ctx.translate(
@@ -64,7 +67,11 @@ const draw = (angle) => {
       ch + Math.sin(angle + arc / 2) * (ch - 120)
     );
     ctx.rotate(angle + arc / 2 + Math.PI * 2);
-    ctx.fillText(products.get(keys[i]).name, -60, 5);
+    ctx.textAlign = "left";
+    ctx.fillStyle = "#000000";
+    ctx.textBaseline = "middle";
+    ctx.font = `bold ${fontSize}px gothic`;
+    ctx.fillText(products.get(keys[i]).name, -60, 1);
     ctx.restore();
 
     angle += arc;

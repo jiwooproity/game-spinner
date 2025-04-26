@@ -1,10 +1,9 @@
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
-@import url('https://fonts.googleapis.com/css2?family=Jersey+15&family=Noto+Sans+KR:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Jersey+15&family=Noto+Sans+KR:wght@100..900&display=swap");
 
 @font-face {
   font-family: "neodgm";
-  src: url("./fonts/neodgm.woff2") format("woff2"),
-    url("./fonts/neodgm.woff") format("woff");
+  src: url("./fonts/neodgm.woff2") format("woff2"), url("./fonts/neodgm.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -13,7 +12,7 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  font-family: "neodgm"
+  font-family: "neodgm";
 }
 
 html,
@@ -111,11 +110,12 @@ body {
   border: 1px solid rgba(54, 54, 54, 1);
   color: rgba(54, 54, 54, 1);
   border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 3px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 3px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 .result-box > span {
-  font-family: "neodgm"
+  font-family: "neodgm";
 }
 
 canvas {
@@ -193,13 +193,40 @@ canvas {
 }
 
 .insert-area {
-  height: 100%;
-  padding: 60px 0px;
+  /* height: 100%; */
+  padding: 60px 0px 30px 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: start;
   gap: 5px;
+}
+
+.font-area {
+  padding: 0px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  gap: 5px;
+}
+
+.size-input {
+  width: 50px;
+  font-size: 15px;
+  line-height: 15px;
+}
+
+.notification-area {
+  margin-top: 10px;
+  font-size: 12px;
+  line-height: 12px;
+  gap: 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  color: rgba(26, 26, 26, 1);
 }
 
 .input-area {
