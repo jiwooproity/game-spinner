@@ -71,7 +71,7 @@ const draw = (angle) => {
     ctx.fillStyle = "#000000";
     ctx.textBaseline = "middle";
     ctx.font = `bold ${fontSize}px gothic`;
-    ctx.fillText(products.get(keys[i]).name, -60, 1);
+    ctx.fillText(products.get(keys[i]).name, -60, 0);
     ctx.restore();
 
     angle += arc;
