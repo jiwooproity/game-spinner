@@ -7,20 +7,11 @@
     <meta name="description" content="게임 룰렛으로 오늘의 게임을 정해보자!" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="쁘밍의 게임 룰렛" />
-    <meta
-      property="og:description"
-      content="게임 룰렛으로 오늘의 게임을 정해보자!"
-    />
+    <meta property="og:description" content="게임 룰렛으로 오늘의 게임을 정해보자!" />
     <meta http-equiv="image" name="image" content="/images/ogimage.PNG" />
     <meta property="og:image" content="/images/ogimage.PNG" />
-    <meta
-      property="og:url"
-      content="https://jiwooproity.github.io/game-spinner/index.html"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Lobster"
-      rel="stylesheet"
-    />
+    <meta property="og:url" content="https://jiwooproity.github.io/game-spinner/index.html" />
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" />
     <link rel="stylesheet" href="./index.css" />
     <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
     <title>BBUMING Roulette</title>
@@ -51,9 +42,27 @@
           <h2 class="right-area-title">룰렛 목록 관리</h2>
           <div class="input-area"></div>
           <button class="add-btn" onclick="addInsert()">룰렛 추가하기</button>
-          <button class="download-btn" onclick="getImage()">
-            스크린샷 저장
-          </button>
+          <button class="download-btn" onclick="getImage()">스크린샷 저장</button>
+        </div>
+        <div class="font-area">
+          <h2 class="right-area-title">사이즈 관리</h2>
+          <div class="input-area">
+            <div>
+              <span>돌림판 크기</span> :
+              <input id="spinner-size" class="size-input" type="number" value="500" max="800" /> px
+            </div>
+            <div class="input-area">
+              <div>
+                <span>글자 크기</span> :
+                <input id="font-size" class="size-input" type="number" value="15" max="40" />
+                px
+              </div>
+            </div>
+            <div class="notification-area">
+              <span>다음 주 중에 방송 송출 화면에 맞게 디자인이 변경될 예정입니다.</span>
+              <span>임시방편으로 사이즈 관리 탭을 추가하였습니다.</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -64,5 +73,6 @@
     <script src="./js/product.js"></script>
     <script src="./js/insert.js"></script>
     <script src="./js/spinner.js"></script>
+    <script src="./js/resize.js"></script>
   </body>
 </html>
