@@ -39,7 +39,7 @@ const draw = (angle) => {
 
   const keys = [...products.keys()];
 
-  ctx.clearRect(0, 0, $canvas.width, $canvas.height);
+  ctx.clearRect(0, 0, 800, 800);
 
   for (let i = 0; i < keys.length; i++) {
     const arc = radian * products.get(keys[i]).size;
