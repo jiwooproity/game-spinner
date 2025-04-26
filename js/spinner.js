@@ -63,8 +63,8 @@ const draw = (angle) => {
 
     ctx.save();
     ctx.translate(
-      cw + Math.cos(angle + arc / 2) * (cw - 120),
-      ch + Math.sin(angle + arc / 2) * (ch - 120)
+      cw + Math.cos(angle + arc / 2) * (cw / 2),
+      ch + Math.sin(angle + arc / 2) * (ch / 2)
     );
     ctx.rotate(angle + arc / 2 + Math.PI * 2);
     ctx.textAlign = "left";
