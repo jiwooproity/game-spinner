@@ -1,6 +1,6 @@
 const INIT_PRODUCTS = [
-  ["1", { name: "", size: 1, color: "#FFFFFF" }],
-  ["2", { name: "", size: 1, color: "#E69DB8" }],
+  ["1", { name: "몬스터헌터 와일즈", size: 1, color: "#FFFFFF" }],
+  ["2", { name: "림버스 컴퍼니", size: 1, color: "#E69DB8" }],
 ];
 
 class Product {
@@ -14,9 +14,10 @@ class Product {
     return this.items.values().reduce((a, b) => a + b.size, 0);
   }
 
-  setItem(color) {
-    this.items.set(this.key, { name: "", size: 1, color });
-    key += 1;
+  setItem(name, color) {
+    this.items.set(String(this.key), { name, size: 1, color });
+    this.key += 1;
+    this.update();
   }
 
   getItem(key) {
@@ -28,7 +29,13 @@ class Product {
   }
 
   reset() {
-    this.views.splice(0, this.views.length);
+    this.views.splice(0);
+  }
+
+  update() {
+    storage.setItem("data-keys", JSON.stringify([...this.items.keys()]));
+    storage.setItem("data-values", JSON.stringify([...this.items.values()]));
+    storage.setItem("key-size", this.key);
   }
 
   restore() {
@@ -41,9 +48,10 @@ class Product {
 
   init() {
     if (storage.has("data-keys")) {
-      const [keys, values] = storage.getParseArray("data-keys", "data-values");
+      const [keys, values, keySize] = storage.getParseArray("data-keys", "data-values", "key-size");
       const views = keys.map((key, i) => [key, values[i]]);
       this.items = new Map(views);
+      this.key = Number(keySize);
     } else {
       this.items = new Map(INIT_PRODUCTS);
     }

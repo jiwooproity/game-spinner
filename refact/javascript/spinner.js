@@ -1,6 +1,8 @@
 const $canvas = document.getElementById("spinner");
 const ctx = $canvas.getContext("2d");
 
+const $pointer = document.querySelector(".pointer");
+
 class Spinner {
   constructor() {
     this.angle = 0;
@@ -9,6 +11,14 @@ class Spinner {
     this.fontSize = 15;
     this.rotate = this.rotate.bind(this); // Need to bind this for use requestAnimationFrame
     this.rotating = null;
+    this.check = "";
+  }
+
+  get result() {
+    const lap = this.angle % 360;
+    const average = 360 / products.views.length;
+    const total = 360 - lap;
+    return Math.floor(total / average);
   }
 
   draw(angle = 0) {
@@ -21,6 +31,17 @@ class Spinner {
     for (const key of products.items.keys()) {
       const product = products.getItem(key);
       const arc = radian * product.size;
+
+      ctx.beginPath();
+      ctx.fillStyle = "#FFFFFF";
+      ctx.moveTo(cw, ch);
+      ctx.arc(cw, ch, cw - 2, angle, angle + arc);
+      ctx.fill();
+      ctx.closePath();
+
+      ctx.lineWidth = 0.5;
+      ctx.strokeStyle = "#000000";
+      ctx.stroke();
 
       // Each product area
       ctx.beginPath();
@@ -69,15 +90,15 @@ class Spinner {
 
     switch (this.status) {
       case "rotate":
-        if (this.roll < 36) {
-          this.roll += 1;
+        if (this.roll < 29) {
+          this.roll += 0.5;
         }
         break;
       case "stop":
         if (this.roll > 0) {
           this.roll -= 0.05;
         } else {
-          this.result();
+          this.output();
           return;
         }
         break;
@@ -91,16 +112,27 @@ class Spinner {
     ctx.rotate((this.roll * Math.PI) / 180);
     ctx.translate(-cw, -ch);
 
+    this.bounce();
     this.draw();
     this.rotating = requestAnimationFrame(this.rotate);
   }
 
-  result() {
-    const lap = this.angle % 360;
-    const average = 360 / products.views.length;
-    const total = 360 - lap;
-    const win = Math.floor(total / average);
-    // console.log(products.views[win]);
+  bounce() {
+    if (products.views[this.result] !== this.check) {
+      this.check = products.views[this.result];
+
+      setTimeout(() => {
+        $pointer.classList.remove("bounce");
+      }, 30);
+
+      $pointer.classList.add("bounce");
+      new Audio("audio/pointer.wav").play();
+    }
+  }
+
+  output() {
+    this.status = "rotate";
+    console.log(products.views[this.result]);
     cancelAnimationFrame(this.rotating);
   }
 
