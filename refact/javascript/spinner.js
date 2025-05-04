@@ -90,8 +90,8 @@ class Spinner {
 
     switch (this.status) {
       case "rotate":
-        if (this.roll < 29) {
-          this.roll += 0.5;
+        if (this.roll < 36) {
+          this.roll += 1;
         }
         break;
       case "stop":
