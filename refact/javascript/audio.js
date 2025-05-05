@@ -1,15 +1,8 @@
-class Audio {
-  constructor(fileName) {
-    this.audio = document.createElement("audio");
-    this.audio.src = fileName;
-    this.audio.volume = 1;
-  }
+class SoundEffect extends Audio {
+  constructor(fileName, volum = 0.5) {
+    super();
 
-  play() {
-    this.audio.play();
-  }
-
-  pause() {
-    this.audio.pause();
+    this.src = fileName;
+    this.volume = volum;
   }
 }
