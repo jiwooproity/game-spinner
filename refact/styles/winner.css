@@ -37,8 +37,6 @@
   align-items: center;
   gap: 20px;
   border-radius: 8px;
-  /* background: #e69db8; */
-  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; */
 }
 
 .winner-content {
@@ -54,13 +52,6 @@
   line-height: 30px;
   color: white;
 }
-/* 
-.present {
-  width: 250px;
-  border-radius: 10px;
-  object-fit: cover;
-  filter: drop-shadow(0px 0px 5px #404040);
-} */
 
 .result-area {
   width: 100%;
