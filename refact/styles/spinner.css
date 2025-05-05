@@ -26,30 +26,57 @@
   filter: drop-shadow(0px 0px 2px #000000);
 }
 
+.stop-btn,
 .rotate-btn {
-  width: 90px;
-  height: 90px;
+  background-image: -webkit-linear-gradient(top, #f4f1ee, #fff);
+  background-image: linear-gradient(top, #f4f1ee, #fff);
+  border-radius: 50%;
+  box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.2), inset 0px 4px 1px 1px white,
+    inset 0px -3px 1px 1px rgba(204, 198, 197, 0.5);
+  float: left;
+  height: 70px;
+  margin: 0 30px 30px 0;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 50%;
-  border: 1px solid #000000;
-  background-color: white;
+  width: 80px;
+  height: 80px;
+  -webkit-transition: width height 0.1s linear;
+  transition: width height 0.1s linear;
+  font-size: 16px;
   cursor: pointer;
 }
 
-.stop-btn {
-  width: 90px;
-  height: 90px;
+.stop-btn:after,
+.rotate-btn:after {
+  color: #e9e6e4;
+  content: "";
+  display: block;
+  font-size: 30px;
+  height: 30px;
+  text-decoration: none;
+  text-shadow: 0px -1px 1px #bdb5b4, 1px 1px 1px white;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  border: 1px solid #000000;
-  background-color: white;
-  cursor: pointer;
+  width: 30px;
+}
+
+.stop-btn:hover .rotate-btn:hover {
+  background-image: -webkit-linear-gradient(top, #fff, #f4f1ee);
+  background-image: linear-gradient(top, #fff, #f4f1ee);
+}
+
+.stop-btn:active,
+.rotate-btn:active {
+  background-image: -webkit-linear-gradient(top, #efedec, #f7f4f4);
+  background-image: linear-gradient(top, #efedec, #f7f4f4);
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.4), inset 0px -3px 1px 1px rgba(204, 198, 197, 0.5);
+}
+
+.stop-btn:active:after,
+.rotate-btn:active:after {
+  color: #dbd2d2;
+  text-shadow: 0px -1px 1px #bdb5b4, 0px 1px 1px white;
 }
 
 .spinner-btn-disabled {
@@ -58,38 +85,4 @@
 }
 
 .spinner-menu {
-  padding: 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #000000;
-  border-radius: 5px;
-  background-color: white;
-}
-
-.spinner-menu > .list,
-.spinner-menu > .size {
-  padding: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.spinner-menu > .list:hover,
-.spinner-menu > .size:hover {
-  background-color: rgb(239, 239, 239);
-}
-
-.spinner-menu > * > .icon {
-  width: 25px;
-  height: 25px;
-}
-
-.spinner-menu > * > span {
-  font-size: 15px;
-  line-height: 15px;
 }
