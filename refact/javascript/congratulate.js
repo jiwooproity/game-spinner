@@ -6,6 +6,6 @@ const OPTIONS = {
 };
 
 const congratulations = () => {
-  jsConfetti.addConfetti(OPTIONS);
+  jsConfetti.addConfetti(OPTIONS); // 폭죽 효과
   new SoundEffect("audio/congratulations.mp3", 0.1).play();
 };
