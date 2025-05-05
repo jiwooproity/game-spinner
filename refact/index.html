@@ -4,19 +4,49 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/spinner.css" />
+    <link rel="stylesheet" href="./styles/winner.css" />
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
     <title>Roulette</title>
   </head>
   <body>
+    <div class="backdrop-area">
+      <div class="backdrop-filter"></div>
+    </div>
     <div class="container">
       <div class="sub-menu"></div>
       <div class="canvas-area">
         <div class="pointer"></div>
         <canvas id="spinner" width="500" height="500"></canvas>
+        <button class="rotate-btn" onclick="spinner.rotate()">SPIN</button>
+        <button class="stop-btn spinner-btn-disabled" onclick="spinner.stop()">STOP</button>
       </div>
-      <button onclick="spinner.rotate()">Play</button>
-      <button onclick="spinner.stop()">Stop</button>
+      <div class="spinner-menu">
+        <div class="list">
+          <img class="icon" src="./images/list.svg" />
+          <span>룰렛 목록</span>
+        </div>
+        <div class="size">
+          <img class="icon" src="./images/size.svg" />
+          <span>크기 관리</span>
+        </div>
+      </div>
+    </div>
+    <div class="winner-popup disabled">
+      <div class="winner-box">
+        <span class="top-text">오늘의 게임은 ..?</span>
+        <div class="result-area">
+          <img class="speech-bubble" src="./images/speech-bubble.png" />
+          <img class="character left" src="./images/character.gif" />
+          <span class="result"></span>
+        </div>
+      </div>
+      <canvas id="confetti"></canvas>
     </div>
     <script src="./javascript/audio.js"></script>
+    <script src="./javascript/color.js"></script>
+    <script src="./javascript/congratulate.js"></script>
+    <script src="./javascript/popup.js"></script>
     <script src="./javascript/storage.js"></script>
     <script src="./javascript/spinner.js"></script>
     <script src="./javascript/product.js"></script>

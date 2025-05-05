@@ -2,6 +2,18 @@ const $canvas = document.getElementById("spinner");
 const ctx = $canvas.getContext("2d");
 
 const $pointer = document.querySelector(".pointer");
+const $rotateButton = document.querySelector(".rotate-btn");
+const $stopeButton = document.querySelector(".stop-btn");
+
+const handleButton = (isRotate) => {
+  if (isRotate) {
+    $rotateButton.classList.add("spinner-btn-disabled");
+    $stopeButton.classList.remove("spinner-btn-disabled");
+  } else {
+    $stopeButton.classList.add("spinner-btn-disabled");
+    $rotateButton.classList.remove("spinner-btn-disabled");
+  }
+};
 
 class Spinner {
   constructor() {
@@ -12,6 +24,7 @@ class Spinner {
     this.rotate = this.rotate.bind(this); // Need to bind this for use requestAnimationFrame
     this.rotating = null;
     this.check = "";
+    this.timer = null;
   }
 
   get result() {
@@ -33,9 +46,16 @@ class Spinner {
       const arc = radian * product.size;
 
       ctx.beginPath();
-      ctx.fillStyle = "#FFFFFF";
+      ctx.fillStyle = "#525252";
       ctx.moveTo(cw, ch);
-      ctx.arc(cw, ch, cw - 2, angle, angle + arc);
+      ctx.arc(cw, ch, cw, angle, angle + arc);
+      ctx.fill();
+      ctx.closePath();
+
+      ctx.beginPath();
+      ctx.fillStyle = product.color;
+      ctx.moveTo(cw, ch);
+      ctx.arc(cw, ch, cw - 3, angle, angle + arc);
       ctx.fill();
       ctx.closePath();
 
@@ -115,25 +135,31 @@ class Spinner {
     this.bounce();
     this.draw();
     this.rotating = requestAnimationFrame(this.rotate);
+
+    handleButton(true);
   }
 
   bounce() {
-    if (products.views[this.result] !== this.check) {
-      this.check = products.views[this.result];
+    if (this.result !== this.check) {
+      clearTimeout(this.timer);
 
-      setTimeout(() => {
-        $pointer.classList.remove("bounce");
+      $pointer.style.transform = "translateX(-50%) rotate(-20deg)";
+
+      this.timer = setTimeout(() => {
+        $pointer.style.transform = "translateX(-50%) rotate(0deg)";
       }, 30);
 
-      $pointer.classList.add("bounce");
-      new Audio("audio/pointer.wav").play();
+      new SoundEffect("audio/pointer.wav").play();
+      this.check = this.result;
     }
   }
 
   output() {
     this.status = "rotate";
-    console.log(products.views[this.result]);
     cancelAnimationFrame(this.rotating);
+    handleButton(false);
+    popup.show(products.views[this.result]);
+    congratulations();
   }
 
   setFontSize(size = 15) {

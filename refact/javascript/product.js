@@ -14,8 +14,8 @@ class Product {
     return this.items.values().reduce((a, b) => a + b.size, 0);
   }
 
-  setItem(name, color) {
-    this.items.set(String(this.key), { name, size: 1, color });
+  setItem(name) {
+    this.items.set(String(this.key), { name, size: 1, color: getColor() });
     this.key += 1;
     this.update();
   }
