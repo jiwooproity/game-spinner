@@ -66,17 +66,17 @@ body {
   align-items: center;
 }
 
-.menu-box {
-  overflow-x: hidden;
-  overflow-y: scroll;
-}
-
-.menu-box::-webkit-scrollbar {
+.spinner-menu ::-webkit-scrollbar {
   width: 5px;
 }
 
-.menu-box::-webkit-scrollbar-thumb {
-  background-color: "#e97ba3";
+.spinner-menu ::-webkit-scrollbar-thumb {
+  background-color: #e97ba3;
+}
+
+.menu-box {
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .menu-table {
