@@ -1,0 +1,125 @@
+const $tableBody = document.querySelector(".menu-table > tbody");
+
+const screenshot = async () => {
+  const date = new Date();
+  const today = `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
+
+  const captureTarget = document.querySelector(".container");
+  const getCaptureOfDOM = await html2canvas(captureTarget, { scale: 4 });
+
+  const link = document.createElement("a");
+  link.href = getCaptureOfDOM.toDataURL("image/png");
+  link.download = `쁘밍의_게임_룰렛_${today}.png`;
+  link.click();
+};
+
+const addProduct = () => {
+  products.setItem();
+  initProduct();
+};
+
+const deleteProduct = (key) => {
+  const productRow = document.querySelector(`tr[id="product-${key}"]`);
+  productRow.remove();
+
+  products.deleteItem(key);
+  initProduct();
+};
+
+const setProductName = (e) => {
+  const { name: key, value } = e.target;
+  const { size, color } = products.getItem(key);
+
+  products.setItem(key, value, size, color);
+
+  initProduct();
+};
+
+const setProductSize = (e) => {
+  const { name: key, value } = e.target;
+  const { name, color } = products.getItem(key);
+
+  if (Number(value) > 0) {
+    products.setItem(key, name, Number(value), color);
+  } else {
+    e.target.value = 1;
+  }
+
+  initProduct();
+};
+
+const createProduct = ({ key, name, size, color }) => {
+  const $color = document.createElement("div");
+  $color.className = "color";
+  $color.style.backgroundColor = color;
+
+  const $tableData1 = document.createElement("td");
+  $tableData1.append($color);
+
+  const $inputGame = document.createElement("input");
+  $inputGame.className = "game";
+  $inputGame.type = "text";
+  $inputGame.name = key;
+  $inputGame.value = name;
+  $inputGame.autocomplete = "off";
+  $inputGame.addEventListener("change", setProductName);
+
+  const $tableData2 = document.createElement("td");
+  $tableData2.append($inputGame);
+
+  const $inputLength = document.createElement("input");
+  $inputLength.className = "length";
+  $inputLength.type = "number";
+  $inputLength.name = key;
+  $inputLength.value = size;
+  $inputLength.addEventListener("change", setProductSize);
+
+  const $tableData3 = document.createElement("td");
+  $tableData3.append($inputLength);
+
+  const $inputPercent = document.createElement("input");
+  $inputPercent.className = "percent";
+  $inputPercent.type = "text";
+  $inputPercent.name = key;
+  $inputPercent.tabIndex = -1;
+  $inputPercent.value = `${((size / products.size) * 100).toFixed(1)} %`;
+
+  const $tableData4 = document.createElement("td");
+  $tableData4.append($inputPercent);
+
+  const $deleteBtn = document.createElement("button");
+  $deleteBtn.className = "delete-btn";
+  $deleteBtn.name = key;
+  $deleteBtn.tabIndex = -1;
+  $deleteBtn.addEventListener("click", () => deleteProduct(key));
+
+  const $tableData5 = document.createElement("td");
+  $tableData5.append($deleteBtn);
+
+  return [$tableData1, $tableData2, $tableData3, $tableData4, $tableData5];
+};
+
+const initProduct = () => {
+  for (let key of products.items.keys()) {
+    const product = document.getElementById(`product-${key}`);
+    if (product) product.remove();
+  }
+
+  render();
+  spinner.draw();
+};
+
+const render = () => {
+  for (let key of products.items.keys()) {
+    const $products = createProduct({ key, ...products.getItem(key) });
+
+    const $tableRow = document.createElement("tr");
+    $tableRow.id = `product-${key}`;
+    $tableRow.className = "menu-item";
+
+    $tableRow.append(...$products);
+    $tableBody.append($tableRow);
+  }
+};
+
+document.addEventListener("DOMContentLoaded", render);

@@ -94,7 +94,7 @@ class Spinner {
       ctx.fillStyle = "#000000";
       ctx.textBaseline = "middle";
       ctx.font = `bold ${this.fontSize}px gothic`;
-      ctx.fillText(product.name, -60, 0);
+      ctx.fillText(product.name, -60, 1);
       ctx.restore();
 
       angle += arc;
