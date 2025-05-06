@@ -150,10 +150,10 @@ const render = () => {
   const $spinnerMenu = document.querySelector(".spinner-menu");
   $spinnerMenu.style.maxHeight = `${storage.getItem("spinner-size") ?? 500}px`;
 
-  $fontSize.value = storage.getItem("font-size");
+  $fontSize.value = storage.getItem("font-size") ?? 15;
   $fontSize.addEventListener("change", changeFontSize);
 
-  $spinnerSize.value = storage.getItem("spinner-size");
+  $spinnerSize.value = storage.getItem("spinner-size") ?? 500;
   $spinnerSize.addEventListener("change", changeSpinnerSize);
 };
 

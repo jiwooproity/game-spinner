@@ -115,12 +115,12 @@ class Spinner {
         }
         break;
       case "stop":
-        if (this.roll > 3) {
+        if (this.roll > 5) {
           this.roll -= 0.05;
         } else if (this.roll > 1) {
           this.roll -= 0.005;
         } else if (this.roll > 0) {
-          this.roll -= 0.004;
+          this.roll -= 0.002;
         } else {
           setTimeout(this.output.bind(this), 1000);
           return;
