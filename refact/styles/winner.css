@@ -15,12 +15,14 @@
   left: 0px;
   background-color: rgba(54, 54, 54, 0.8);
   backdrop-filter: blur(8px);
+  opacity: 1;
+  transition: opacity 0.5s ease;
   cursor: pointer;
   z-index: 999;
 }
 
 .winner-popup.disabled {
-  display: none;
+  opacity: 0;
   pointer-events: none;
 }
 
