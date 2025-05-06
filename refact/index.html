@@ -22,17 +22,20 @@
           <button class="stop-btn spinner-btn-disabled" onclick="spinner.stop()">STOP</button>
         </div>
         <div class="spinner-menu">
+          <table class="menu-head">
+            <tbody>
+              <tr class="menu-item">
+                <th class="color">색상</th>
+                <th class="game">게임명</th>
+                <th class="length">개수</th>
+                <th class="percent">확률</th>
+                <th class="trash"></th>
+              </tr>
+            </tbody>
+          </table>
           <div class="menu-box">
             <table class="menu-table">
-              <tbody>
-                <tr class="menu-item">
-                  <th>색상</th>
-                  <th>게임명</th>
-                  <th>개수</th>
-                  <th>확률</th>
-                  <th></th>
-                </tr>
-              </tbody>
+              <tbody></tbody>
             </table>
           </div>
           <button class="add btn" onclick="addProduct()">룰렛 추가하기</button>
