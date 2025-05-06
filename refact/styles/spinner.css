@@ -83,3 +83,26 @@
   pointer-events: none;
   opacity: 0;
 }
+
+.size-area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  position: absolute;
+}
+
+.size-area > div > input {
+  width: 40px;
+  margin-top: 20px;
+  font-size: 15px;
+  line-height: 15px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: transparent;
+}
+
+.size-area > div > input:focus {
+  outline: none;
+}

@@ -1,4 +1,6 @@
 const $tableBody = document.querySelector(".menu-table > tbody");
+const $fontSize = document.getElementById("font-size");
+const $spinnerSize = document.getElementById("spinner-size");
 
 const screenshot = async () => {
   const date = new Date();
@@ -11,6 +13,30 @@ const screenshot = async () => {
   link.href = getCaptureOfDOM.toDataURL("image/png");
   link.download = `쁘밍의_게임_룰렛_${today}.png`;
   link.click();
+};
+
+const changeFontSize = (e) => {
+  const { value } = e.target;
+
+  if (Number(value) < 15) {
+    e.target.value = 15;
+  } else if (Number(value) > 30) {
+    e.target.value = 30;
+  } else {
+    spinner.setFontSize(Number(value));
+  }
+};
+
+const changeSpinnerSize = (e) => {
+  const { value } = e.target;
+
+  if (Number(value) < 500) {
+    e.target.value = 500;
+  } else if (Number(value) > 700) {
+    e.target.value = 700;
+  } else {
+    spinner.setCanvasSize(Number(value));
+  }
 };
 
 const addProduct = () => {
@@ -120,6 +146,15 @@ const render = () => {
     $tableRow.append(...$products);
     $tableBody.append($tableRow);
   }
+
+  const $spinnerMenu = document.querySelector(".spinner-menu");
+  $spinnerMenu.style.maxHeight = `${storage.getItem("spinner-size") ?? 500}px`;
+
+  $fontSize.value = storage.getItem("font-size");
+  $fontSize.addEventListener("change", changeFontSize);
+
+  $spinnerSize.value = storage.getItem("spinner-size");
+  $spinnerSize.addEventListener("change", changeSpinnerSize);
 };
 
 document.addEventListener("DOMContentLoaded", render);
