@@ -62,7 +62,16 @@
 
 .menu-box {
   max-height: 500px;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.menu-box::-webkit-scrollbar {
+  width: 5px;
+}
+
+.menu-box::-webkit-scrollbar-thumb {
+  background-color: "#e97ba3";
 }
 
 .menu-table {
