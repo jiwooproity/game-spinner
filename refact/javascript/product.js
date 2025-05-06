@@ -14,10 +14,11 @@ class Product {
     return this.items.values().reduce((a, b) => a + b.size, 0);
   }
 
-  setItem(name) {
-    this.items.set(String(this.key), { name, size: 1, color: getColor() });
+  setItem(key = this.key, name = "", size = 1, color = getColor()) {
+    this.items.set(String(key), { name, size, color });
     this.key += 1;
     this.update();
+    this.restore();
   }
 
   getItem(key) {
@@ -26,6 +27,8 @@ class Product {
 
   deleteItem(key) {
     this.items.delete(key);
+    this.update();
+    this.restore();
   }
 
   reset() {

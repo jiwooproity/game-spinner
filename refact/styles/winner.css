@@ -90,7 +90,7 @@
   height: 45px;
   margin-top: 53px;
   background-color: black;
-  background-image: url(../images/dirt.png);
+  background-image: url(../images/dirt.svg);
   background-size: 30%;
   filter: drop-shadow(0px 5px 5px #404040);
 }

@@ -43,5 +43,113 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+}
+
+.spinner-area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  gap: 30px;
+}
+
+.spinner-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-box {
+  max-height: 500px;
+  overflow: scroll;
+}
+
+.menu-table {
+  border-collapse: collapse;
+}
+
+.menu-item {
+  text-align: left;
+}
+
+.menu-item > th {
+  padding: 4px 8px;
+}
+
+.menu-item > td {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.menu-item > td > .color {
+  width: 50px;
+  height: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.menu-item > td > .game {
+  width: 200px;
+}
+
+.menu-item > td > .length {
+  width: 60px;
+}
+
+.menu-item > td > .percent {
+  width: 60px;
+  text-align: right;
+}
+
+.menu-item > td > .delete-btn {
+  width: 20px;
+  height: 24px;
+  margin: 0px 15px;
+  border: none;
+  background-image: url(../images/trash-close.svg);
+  background-position: 100%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  cursor: pointer;
+}
+
+.menu-item > td > .delete-btn:hover {
+  width: 20px;
+  height: 24px;
+  border: none;
+  background-image: url(../images/trash-open.svg);
+  background-position: 100%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  cursor: pointer;
+}
+
+.menu-item input {
+  width: 100%;
+  font-size: 15px;
+  line-height: 15px;
+  padding: 8px 8px;
+  border: none;
+  background-color: transparent;
+}
+
+.menu-item input:focus {
+  outline: none;
+}
+
+.spinner-menu > .btn {
+  font-size: 15px;
+  line-height: 15px;
+  width: 100%;
+  margin-top: 5px;
+  padding: 12px 0px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: white;
+  background-color: #e69db8;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.spinner-menu > .btn:hover {
+  background-color: #d97499;
 }
