@@ -20,7 +20,7 @@ class Spinner {
     this.angle = 0;
     this.roll = 0;
     this.status = "rotate";
-    this.fontSize = 15;
+    this.fontSize = storage.getItem("font-size") ?? 15;
     this.rotate = this.rotate.bind(this); // Need to bind this for use requestAnimationFrame
     this.rotating = null;
     this.check = "";
@@ -169,17 +169,22 @@ class Spinner {
   setFontSize(size = 15) {
     this.fontSize = size;
     this.draw();
+    storage.setItem("font-size", size);
   }
 
   setCanvasSize(size) {
     this.resize(size);
     this.init();
     this.draw();
+    storage.setItem("spinner-size", size);
   }
 
   resize(size) {
     $canvas.width = size;
     $canvas.height = size;
+
+    const $spinnerMenu = document.querySelector(".spinner-menu");
+    $spinnerMenu.style.maxHeight = `${size}px`;
   }
 
   init() {
@@ -194,3 +199,10 @@ class Spinner {
 }
 
 const spinner = new Spinner();
+
+const init = () => {
+  $canvas.width = storage.getItem("spinner-size") ?? 500;
+  $canvas.height = storage.getItem("spinner-size") ?? 500;
+};
+
+document.addEventListener("DOMContentLoaded", init);
