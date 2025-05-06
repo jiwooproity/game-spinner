@@ -120,7 +120,7 @@ class Spinner {
         } else if (this.roll > 1) {
           this.roll -= 0.005;
         } else if (this.roll > 0) {
-          this.roll -= 0.002;
+          this.roll -= 0.001;
         } else {
           setTimeout(this.output.bind(this), 1000);
           return;
