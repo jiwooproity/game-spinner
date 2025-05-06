@@ -19,10 +19,20 @@
           <div class="pointer"></div>
           <canvas id="spinner" width="500" height="500"></canvas>
           <button class="rotate-btn" onclick="spinner.rotate()">SPIN</button>
-          <button class="stop-btn spinner-btn-disabled" onclick="spinner.stop()">STOP</button>
+          <button
+            class="stop-btn spinner-btn-disabled"
+            onclick="spinner.stop()"
+          >
+            STOP
+          </button>
           <div class="size-area">
-            <div>폰트 크기 : <input id="font-size" type="number" value="15" /> px</div>
-            <div>돌림판 크기 : <input id="spinner-size" type="number" value="500" /> px</div>
+            <div>
+              폰트 크기 : <input id="font-size" type="number" value="15" /> px
+            </div>
+            <div>
+              돌림판 크기 :
+              <input id="spinner-size" type="number" value="500" /> px
+            </div>
           </div>
         </div>
         <div class="spinner-menu">
@@ -43,7 +53,9 @@
             </table>
           </div>
           <button class="add btn" onclick="addProduct()">룰렛 추가하기</button>
-          <button class="screenshot btn" onclick="screenshot()">스크린샷 저장하기</button>
+          <button class="screenshot btn" onclick="screenshot()">
+            스크린샷 저장하기
+          </button>
         </div>
       </div>
     </div>
@@ -52,7 +64,8 @@
         <span class="top-text">오늘의 게임은 ..?</span>
         <div class="result-area">
           <img class="speech-bubble" src="./images/speech-bubble.png" />
-          <img class="character left" src="./images/character.gif" />
+          <img class="character left" src="./images/bburincle.gif" />
+          <img class="character right" src="./images/bbuming.gif" />
           <span class="result"></span>
         </div>
         <div class="dirt-floor"></div>

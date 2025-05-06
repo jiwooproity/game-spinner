@@ -83,8 +83,15 @@
   width: 100px;
   position: absolute;
   bottom: -80px;
-  left: -20px;
   filter: drop-shadow(0px 2px 3px #404040);
+}
+
+.left {
+  left: -20px;
+}
+
+.right {
+  right: -20px;
 }
 
 .dirt-floor {
