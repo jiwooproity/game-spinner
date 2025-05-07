@@ -20,7 +20,12 @@
 
 ## 동작 화면
 
-<img src="/preview/Animation.gif" width="100%" height=""/>
+### 돌림판
+![image](https://github.com/user-attachments/assets/5b29e1bf-40d9-444a-8bd8-b7065c503312)
+
+### 당첨
+
+![image](https://github.com/user-attachments/assets/5ec5acb3-8544-4275-9224-770d963d979e)
 
 ## 라이브러리
 
