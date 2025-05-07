@@ -48,8 +48,10 @@ class Product {
   restore() {
     this.reset();
 
-    for (const value of this.items.values()) {
-      this.views.push(...Array.from({ length: value.size }).fill(value.name));
+    for (const key of this.items.keys()) {
+      const data = this.getItem(key);
+      const object = { key, name: data.name };
+      this.views.push(...Array.from({ length: data.size }).fill(object));
     }
   }
 
