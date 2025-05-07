@@ -1,6 +1,6 @@
 const speaker = document.querySelector(".speaker");
 
-let speakerStatus = false; // default is on
+let speakerStatus = true; // default is on
 
 class SoundEffect extends Audio {
   constructor(fileName, volum = 0.5) {
@@ -18,7 +18,7 @@ const handleSpeaker = () => {
 };
 
 const initSpeaker = () => {
-  speakerStatus = storage.getItem("speaker-status", "boolean") ?? false;
+  speakerStatus = storage.getItem("speaker-status", "boolean") ?? true;
   speaker.src = `./images/speaker-${speakerStatus ? "on" : "off"}.svg`;
   speaker.addEventListener("click", handleSpeaker);
 };
