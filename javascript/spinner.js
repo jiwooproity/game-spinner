@@ -162,7 +162,7 @@ class Spinner {
     this.status = "rotate";
     cancelAnimationFrame(this.rotating);
     handleButton(false);
-    popup.show(products.views[this.result]);
+    popup.show(this.result);
     congratulations();
   }
 
