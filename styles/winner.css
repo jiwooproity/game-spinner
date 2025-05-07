@@ -86,12 +86,34 @@
   filter: drop-shadow(0px 2px 3px #404040);
 }
 
+.percent-area {
+  position: absolute;
+  right: 70px;
+  bottom: -80px;
+}
+
+.percent-area > .object {
+  width: 100px;
+  filter: drop-shadow(0px 2px 3px #404040);
+}
+
 .bbuming {
   left: -20px;
 }
 
 .bburincle {
   right: -20px;
+}
+
+.percent-in-sign {
+  white-space: nowrap;
+  position: absolute;
+  top: 15px;
+  left: calc(50% + 5px);
+  transform: translateX(-50%);
+  font-size: 18px;
+  line-height: 18px;
+  color: #ffffff;
 }
 
 .dirt-floor {
