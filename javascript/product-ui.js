@@ -22,9 +22,9 @@ const changeFontSize = (e) => {
     e.target.value = 15;
   } else if (Number(value) > 30) {
     e.target.value = 30;
-  } else {
-    spinner.setFontSize(Number(value));
   }
+
+  spinner.setFontSize(Number(e.target.value));
 };
 
 const changeSpinnerSize = (e) => {
@@ -34,9 +34,9 @@ const changeSpinnerSize = (e) => {
     e.target.value = 500;
   } else if (Number(value) > 700) {
     e.target.value = 700;
-  } else {
-    spinner.setCanvasSize(Number(value));
   }
+
+  spinner.setCanvasSize(Number(e.target.value));
 };
 
 const addProduct = () => {
