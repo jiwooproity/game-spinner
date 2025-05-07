@@ -69,11 +69,13 @@ const setProductSize = (e) => {
   const { name: key, value } = e.target;
   const { name, color } = products.getItem(key);
 
-  if (Number(value) > 0) {
-    products.setItem(key, name, Number(value), color);
-  } else {
+  if (Number(value) > 999) {
+    e.target.value = 999;
+  } else if (Number(value) < 0) {
     e.target.value = 1;
   }
+
+  products.setItem(key, name, Number(e.target.value), color);
 
   for (let key of products.items.keys()) {
     const el = document.getElementById(`percent-${key}`);
@@ -121,6 +123,7 @@ const createProduct = ({ key, name, size, color }) => {
   $inputPercent.name = key;
   $inputPercent.readOnly = "true";
   $inputPercent.tabIndex = -1;
+  $inputPercent.maxLength = 999;
   $inputPercent.value = getPercent(size, products.size);
 
   const $tableData4 = document.createElement("td");
