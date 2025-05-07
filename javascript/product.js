@@ -15,10 +15,14 @@ class Product {
   }
 
   setItem(key = this.key, name = "", size = 1, color = getColor()) {
+    let currentKey = key;
+
     this.items.set(String(key), { name, size, color });
     this.key += 1;
     this.update();
     this.restore();
+
+    return currentKey;
   }
 
   getItem(key) {
