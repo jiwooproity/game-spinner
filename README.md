@@ -24,10 +24,6 @@
 
 ![image](https://github.com/user-attachments/assets/5ec5acb3-8544-4275-9224-770d963d979e)
 
-## 동작 화면
-
-<img src="./preview/Animation.gif" />
-
 ## 라이브러리
 
 |Library|Description|
