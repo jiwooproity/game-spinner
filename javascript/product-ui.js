@@ -40,16 +40,21 @@ const changeSpinnerSize = (e) => {
 };
 
 const addProduct = () => {
-  products.setItem();
+  const key = products.setItem();
   initProduct();
+
+  const el = document.getElementById(`game-${key}`);
+  el.focus();
 };
 
 const deleteProduct = (key) => {
-  const productRow = document.querySelector(`tr[id="product-${key}"]`);
-  productRow.remove();
+  if (products.views.length > 2) {
+    const productRow = document.querySelector(`tr[id="product-${key}"]`);
+    productRow.remove();
 
-  products.deleteItem(key);
-  initProduct();
+    products.deleteItem(key);
+    initProduct();
+  }
 };
 
 const setProductName = (e) => {
@@ -57,8 +62,7 @@ const setProductName = (e) => {
   const { size, color } = products.getItem(key);
 
   products.setItem(key, value, size, color);
-
-  initProduct();
+  spinner.draw();
 };
 
 const setProductSize = (e) => {
@@ -71,7 +75,12 @@ const setProductSize = (e) => {
     e.target.value = 1;
   }
 
-  initProduct();
+  for (let key of products.items.keys()) {
+    const el = document.getElementById(`percent-${key}`);
+    el.value = getPercent(products.getItem(key).size, products.size);
+  }
+
+  spinner.draw();
 };
 
 const createProduct = ({ key, name, size, color }) => {
@@ -85,6 +94,7 @@ const createProduct = ({ key, name, size, color }) => {
   const $inputGame = document.createElement("input");
   $inputGame.className = "game";
   $inputGame.type = "text";
+  $inputGame.id = `game-${key}`;
   $inputGame.name = key;
   $inputGame.value = name;
   $inputGame.autocomplete = "off";
@@ -98,6 +108,7 @@ const createProduct = ({ key, name, size, color }) => {
   $inputLength.type = "number";
   $inputLength.name = key;
   $inputLength.value = size;
+  $inputLength.autocomplete = "off";
   $inputLength.addEventListener("change", setProductSize);
 
   const $tableData3 = document.createElement("td");
@@ -106,9 +117,11 @@ const createProduct = ({ key, name, size, color }) => {
   const $inputPercent = document.createElement("input");
   $inputPercent.className = "percent";
   $inputPercent.type = "text";
+  $inputPercent.id = `percent-${key}`;
   $inputPercent.name = key;
+  $inputPercent.readOnly = "true";
   $inputPercent.tabIndex = -1;
-  $inputPercent.value = `${((size / products.size) * 100).toFixed(1)} %`;
+  $inputPercent.value = getPercent(size, products.size);
 
   const $tableData4 = document.createElement("td");
   $tableData4.append($inputPercent);
