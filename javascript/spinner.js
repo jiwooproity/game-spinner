@@ -132,8 +132,6 @@ class Spinner {
 
     this.angle += this.roll;
 
-    ctx.clearRect(0, 0, $canvas.width, $canvas.height);
-
     ctx.translate(cw, ch);
     ctx.rotate((this.roll * Math.PI) / 180);
     ctx.translate(-cw, -ch);
