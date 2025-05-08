@@ -144,7 +144,7 @@ class Spinner {
   }
 
   bounce() {
-    if (products.views[this.result].key !== this.check) {
+    if (products.views[this.result] !== this.check) {
       clearTimeout(this.timer);
 
       $pointer.style.transform = "translateX(-50%) rotate(-20deg)";
@@ -154,7 +154,7 @@ class Spinner {
       }, 30);
 
       new SoundEffect("audio/pointer.wav").play();
-      this.check = products.views[this.result].key;
+      this.check = products.views[this.result];
     }
   }
 
