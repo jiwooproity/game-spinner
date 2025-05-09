@@ -38,8 +38,8 @@ body {
 .update-text-area {
   width: 410px;
   position: absolute;
-  top: calc(50% + 230px);
-  left: 50%;
+  top: calc(50% + 196px);
+  left: calc(50% + 25px);
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
@@ -48,22 +48,22 @@ body {
 }
 
 .update-text {
-  font-size: 16px;
-  line-height: 16px;
+  font-size: 14px;
+  line-height: 14px;
 }
 
 .update-btn {
-  width: 410px;
-  font-size: 16px;
-  line-height: 16px;
+  width: 360px;
+  font-size: 14px;
+  line-height: 14px;
   position: absolute;
-  top: calc(50% + 285px);
+  top: calc(50% + 245px);
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   gap: 5px;
-  padding: 12px 0px;
+  padding: 9px 0px;
   border: 1px dotted white;
   border-radius: 5px;
   color: white;
@@ -79,7 +79,7 @@ body {
 }
 
 .bbeggom-bbuming {
-  width: 550px;
+  width: 400px;
   position: absolute;
   top: 50%;
   left: 50%;
