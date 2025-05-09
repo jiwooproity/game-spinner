@@ -1,6 +1,6 @@
 const INIT_PRODUCTS = [
-  ["1", { name: "몬스터헌터 와일즈", size: 1, color: "#FFFFFF" }],
-  ["2", { name: "림버스 컴퍼니", size: 1, color: "#E69DB8" }],
+  ["1", { name: "쁘밍", size: 1, color: "#FFFFFF" }],
+  ["2", { name: "룰렛", size: 1, color: "#E69DB8" }],
 ];
 
 class Product {

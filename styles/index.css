@@ -19,6 +19,73 @@ body {
   overflow: hidden;
 }
 
+.update-screen {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  background-color: #d97499;
+  opacity: 1;
+}
+
+.update-screen.disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.update-text-area {
+  width: 410px;
+  position: absolute;
+  top: calc(50% + 230px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: white;
+}
+
+.update-text {
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.update-btn {
+  width: 410px;
+  font-size: 16px;
+  line-height: 16px;
+  position: absolute;
+  top: calc(50% + 285px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 12px 0px;
+  border: 1px dotted white;
+  border-radius: 5px;
+  color: white;
+  background-color: transparent;
+  transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease;
+  cursor: pointer;
+}
+
+.update-btn:hover {
+  border: 1px dotted black;
+  color: black;
+  background-color: white;
+}
+
+.bbeggom-bbuming {
+  width: 550px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .backdrop-area {
   width: 100%;
   height: 100%;
@@ -92,7 +159,7 @@ body {
 }
 
 .menu-item > th {
-  padding: 4px 4px;
+  padding: 8px 4px;
 }
 
 .menu-item > th.color {
