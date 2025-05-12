@@ -13,20 +13,20 @@
     <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
     <link rel="stylesheet" href="./styles/index.css" />
     <link rel="stylesheet" href="./styles/spinner.css" />
+    <link rel="stylesheet" href="./styles/standby-screen.css" />
     <link rel="stylesheet" href="./styles/winner.css" />
     <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
     <title>쁘밍의 게임 룰렛</title>
   </head>
   <body>
-    <div class="update-screen disabled">
+    <div class="standby-screen">
       <div class="bbeggom-area">
         <img class="bbeggom-bbuming" src="./images/bbeggom.gif" />
       </div>
-      <div class="update-text-area">
-        <span class="update-text">쁘밍의 게임 룰렛이 업데이트 되었습니다.</span>
-        <span class="update-text">기존 버전의 데이터는 충돌 방지를 위해 제거됩니다.</span>
+      <div class="standby-text-area">
+        <span class="standby-text">쁘밍의 게임 룰렛</span>
       </div>
-      <button class="update-btn">확인</button>
+      <button class="standby-btn">시작</button>
     </div>
     <div class="backdrop-area">
       <div class="backdrop-filter"></div>
@@ -98,6 +98,6 @@
     <script src="./javascript/spinner.js"></script>
     <script src="./javascript/product.js"></script>
     <script src="./javascript/product-ui.js"></script>
-    <script src="./javascript/update-alert.js"></script>
+    <script src="./javascript/standby.js"></script>
   </body>
 </html>
