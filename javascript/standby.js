@@ -48,8 +48,8 @@ const typingText = () => {
 };
 
 const disableStandby = () => {
-  $standbyScreen.classList.add("disabled");
   clearInterval(typingInterval);
+  $standbyScreen.classList.add("disabled");
 };
 
 const changeBbeggomImage = (e) => {
