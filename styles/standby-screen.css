@@ -17,7 +17,7 @@
 
 .standby-text-area {
   position: absolute;
-  top: calc(50% + 200px);
+  top: calc(50% + 195px);
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
@@ -30,6 +30,7 @@
 .standby-text {
   font-size: 25px;
   line-height: 25px;
+  position: relative;
 }
 
 .standby-btn {
