@@ -39,7 +39,10 @@ class Spinner {
     const size = products.size;
     const radian = ((360 / size) * Math.PI) / 180; // Average radian of total product
 
-    ctx.clearRect(0, 0, $canvas.width * 2, $canvas.height * 2);
+    ctx.save();
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, $canvas.width, $canvas.height);
+    ctx.restore();
 
     for (const key of products.items.keys()) {
       const product = products.getItem(key);
