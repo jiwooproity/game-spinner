@@ -2,19 +2,6 @@ const $tableBody = document.querySelector(".menu-table > tbody");
 const $fontSize = document.getElementById("font-size");
 const $spinnerSize = document.getElementById("spinner-size");
 
-const screenshot = async () => {
-  const date = new Date();
-  const today = `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
-
-  const captureTarget = document.querySelector(".container");
-  const getCaptureOfDOM = await html2canvas(captureTarget, { scale: 4 });
-
-  const link = document.createElement("a");
-  link.href = getCaptureOfDOM.toDataURL("image/png");
-  link.download = `쁘밍의_게임_룰렛_${today}.png`;
-  link.click();
-};
-
 const changeFontSize = (e) => {
   const { value } = e.target;
 
