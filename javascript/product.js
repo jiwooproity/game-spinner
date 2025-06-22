@@ -62,7 +62,9 @@ class Product {
       this.items = new Map(views);
       this.key = Number(keySize);
     } else {
+      this.key = 3;
       this.items = new Map(INIT_PRODUCTS);
+      this.views = [];
     }
   }
 }
@@ -73,6 +75,17 @@ const initial = () => {
   products.init();
   products.restore();
   spinner.init();
+};
+
+const reset = () => {
+  if (confirm("룰렛을 리셋 시킬까요?")) {
+    resetProduct();
+    localStorage.clear();
+    products.init();
+    products.update();
+    products.restore();
+    initProduct();
+  }
 };
 
 document.addEventListener("DOMContentLoaded", initial);
