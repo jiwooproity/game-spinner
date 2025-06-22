@@ -78,7 +78,7 @@ const initial = () => {
 };
 
 const reset = () => {
-  if (confirm("룰렛을 리셋 시킬까요?")) {
+  if (confirm("룰렛 초기화를 진행할까요?")) {
     resetProduct();
     localStorage.clear();
     products.init();
