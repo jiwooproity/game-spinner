@@ -128,17 +128,20 @@ const createProduct = ({ key, name, size, color }) => {
   return [$tableData1, $tableData2, $tableData3, $tableData4, $tableData5];
 };
 
-const initProduct = () => {
+const resetProduct = () => {
   for (let key of products.items.keys()) {
     const product = document.getElementById(`product-${key}`);
     if (product) product.remove();
   }
+};
 
-  render();
+const initProduct = () => {
+  resetProduct();
+  renderProduct();
   spinner.draw();
 };
 
-const render = () => {
+const renderProduct = () => {
   for (let key of products.items.keys()) {
     const $products = createProduct({ key, ...products.getItem(key) });
 
@@ -160,4 +163,4 @@ const render = () => {
   $spinnerSize.addEventListener("change", changeSpinnerSize);
 };
 
-document.addEventListener("DOMContentLoaded", render);
+document.addEventListener("DOMContentLoaded", renderProduct);
