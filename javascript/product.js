@@ -80,7 +80,7 @@ const initial = () => {
 const reset = () => {
   if (confirm("룰렛 초기화를 진행할까요?")) {
     resetProduct();
-    localStorage.clear();
+    storage.removeParseArray("data-keys", "data-values", "key-size");
     products.init();
     products.update();
     products.restore();

@@ -24,6 +24,14 @@ class Storage {
     return keys.map((key) => JSON.parse(this.getItem(key)));
   }
 
+  removeItem(key) {
+    localStorage.removeItem(key);
+  }
+
+  removeParseArray(...keys) {
+    return keys.map((key) => this.removeItem(key));
+  }
+
   has(key) {
     return this.getItem(key) !== null;
   }
